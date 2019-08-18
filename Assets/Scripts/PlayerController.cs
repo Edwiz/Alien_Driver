@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    #region Fields
     public static PlayerController instance;
 
     [Header("Player Configuration")]
@@ -15,22 +16,31 @@ public class PlayerController : MonoBehaviour
     public float acceleration;
     [Range(1, 10)]
     public float brakeTime;
-    public bool isMovingLeft, isMovingRight, isMovingUp, isMovingDown;
-    public bool canMove;
 
+    [Header("Components")]
     //Cached Variables
     public Rigidbody2D theRigidBody;
     public Animator myAnim;
 
+    //Private Variables
+    [SerializeField]
+    private bool canMove;
     private float speedIncrement;
     private float initSpeed;
     private float xInput;
     private float yInput;
+    private bool isMovingLeft, isMovingRight, isMovingUp, isMovingDown;
+    #endregion
 
     // Use this for initialization
     void Start()
     {
         instance = this;
+    }
+
+    private void FixedUpdate()
+    {
+        PlayerMovement();
     }
 
     // Update is called once per frame
@@ -42,11 +52,6 @@ public class PlayerController : MonoBehaviour
         {
             speedIncrement -= Time.deltaTime * brakeTime;
         }
-    }
-
-    private void FixedUpdate()
-    {
-        PlayerMovement();
     }
 
     void PlayerMovement()
@@ -81,59 +86,6 @@ public class PlayerController : MonoBehaviour
             myAnim.SetFloat("lastMoveX", Input.GetAxis("Horizontal"));
             myAnim.SetFloat("lastMoveY", Input.GetAxis("Vertical"));
         }
-
-        //Input without diagonal movement
-        /*
-        //Right Movement
-        if (xInput == 1 && yInput == 0)
-        {
-            theRigidBody.velocity = new Vector2(initSpeed + speedIncrement, 0f);
-        }
-        //Left Movement
-        if (xInput == -1 && yInput == 0)
-        {
-            theRigidBody.velocity = new Vector2(-initSpeed - speedIncrement, 0f);
-        }
-        //Up
-        if (xInput == 0 && yInput == 1)
-        {
-            theRigidBody.velocity = new Vector2(0f, initSpeed + speedIncrement);
-        }
-        //Down Movement
-        if (xInput == 0 && yInput == -1)
-        {
-            theRigidBody.velocity = new Vector2(0f, -initSpeed - speedIncrement);
-        }
-        */
-
-        //CODE FOR DIAGONAL SPEED
-        //Horizontal Movement
-        /*if (isMovingRight || isMovingLeft)
-        {
-            theRigidBody.velocity = new Vector2(xInput * normalMoveSpeed, yInput * diagonalMoveSpeed);
-        }
-
-        //Vertical Movement
-        if (isMovingUp || isMovingDown)
-        {
-            theRigidBody.velocity = new Vector2(xInput * diagonalMoveSpeed, yInput * normalMoveSpeed);
-        }*/
-
-        //CODE FOR NOT MOVING IN DIAGONAL
-
-        /*
-        //Clamp to horizontal axis avoiding diagonal movement
-        if (isMovingRight || isMovingLeft)
-        {
-            theRigidBody.velocity = new Vector2(xInput, 0) * normalMoveSpeed;
-        }
-
-        //Clamp to vertical axis avoiding diagonal movement
-        if (isMovingUp || isMovingDown)
-        {
-            theRigidBody.velocity = new Vector2(0, yInput) * normalMoveSpeed;
-        }
-        */
 
         //Conditions for preventing diagonal movement
         if (Input.GetAxisRaw("Horizontal") == 1)
@@ -171,3 +123,58 @@ public class PlayerController : MonoBehaviour
         }
     }
 }
+
+//_____________________________________________________________________________________
+
+//Input without diagonal movement
+/*
+//Right Movement
+if (xInput == 1 && yInput == 0)
+{
+    theRigidBody.velocity = new Vector2(initSpeed + speedIncrement, 0f);
+}
+//Left Movement
+if (xInput == -1 && yInput == 0)
+{
+    theRigidBody.velocity = new Vector2(-initSpeed - speedIncrement, 0f);
+}
+//Up
+if (xInput == 0 && yInput == 1)
+{
+    theRigidBody.velocity = new Vector2(0f, initSpeed + speedIncrement);
+}
+//Down Movement
+if (xInput == 0 && yInput == -1)
+{
+    theRigidBody.velocity = new Vector2(0f, -initSpeed - speedIncrement);
+}
+*/
+
+//CODE FOR DIAGONAL SPEED
+//Horizontal Movement
+/*if (isMovingRight || isMovingLeft)
+{
+    theRigidBody.velocity = new Vector2(xInput * normalMoveSpeed, yInput * diagonalMoveSpeed);
+}
+
+//Vertical Movement
+if (isMovingUp || isMovingDown)
+{
+    theRigidBody.velocity = new Vector2(xInput * diagonalMoveSpeed, yInput * normalMoveSpeed);
+}*/
+
+//CODE FOR NOT MOVING IN DIAGONAL
+
+/*
+//Clamp to horizontal axis avoiding diagonal movement
+if (isMovingRight || isMovingLeft)
+{
+    theRigidBody.velocity = new Vector2(xInput, 0) * normalMoveSpeed;
+}
+
+//Clamp to vertical axis avoiding diagonal movement
+if (isMovingUp || isMovingDown)
+{
+    theRigidBody.velocity = new Vector2(0, yInput) * normalMoveSpeed;
+}
+*/

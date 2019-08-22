@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TestManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     #region GeneralFields
-    public static TestManager instance;
+    public static GameManager instance;
 
     [Header("Indication Points")]
     //Cached Variables

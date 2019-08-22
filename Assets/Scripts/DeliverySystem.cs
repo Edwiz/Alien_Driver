@@ -46,7 +46,7 @@ public class DeliverySystem : MonoBehaviour
             itemDelivered = true;
             PlayerController.instance.canMove = false;
             deliverSpriteRenderer.color = new Color(1, 1, 1, 0);
-            TestManager.instance.timerON = false;
+            GameManager.instance.timerON = false;
             Debug.Log("Initiate another task");
             StartCoroutine(EndingTask());
 
@@ -85,7 +85,7 @@ public class DeliverySystem : MonoBehaviour
     IEnumerator EndingTask()
     {
         yield return new WaitForSeconds(2f);
-        TestManager.instance.taskFinished = true;
+        GameManager.instance.taskFinished = true;
         gameObject.SetActive(false);
     }
 }

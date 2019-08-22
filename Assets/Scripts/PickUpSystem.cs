@@ -31,8 +31,8 @@ public class PickUpSystem : MonoBehaviour
     {
         instance = this;
         theAnimator = GetComponent<Animator>();
-        m_delivery = TestManager.instance.deliverGO;
-        m_deliveryPoint = TestManager.instance.deliverPoint;
+        m_delivery = GameManager.instance.deliverGO;
+        m_deliveryPoint = GameManager.instance.deliverPoint;
     }
 
     public void Update()

@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     #region Fields
     public static PlayerController instance;
+    public bool canMove;
 
     [Header("Player Configuration")]
     [Range(0, 10)]
@@ -23,8 +24,6 @@ public class PlayerController : MonoBehaviour
     public Animator myAnim;
 
     //Private Variables
-    [SerializeField]
-    private bool canMove;
     private float speedIncrement;
     private float initSpeed;
     private float xInput;
@@ -40,13 +39,16 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        PlayerMovement();
+        if (canMove)
+        {
+            PlayerMovement();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(theRigidBody.velocity);
+        //Debug.Log(theRigidBody.velocity);
 
         if (speedIncrement > 0 && (Input.GetAxis("Acceleration") == 0 || Input.GetButtonUp("Fire1")))
         {

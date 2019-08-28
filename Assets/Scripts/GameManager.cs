@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using Cinemachine;
 
 public class GameManager : MonoBehaviour
@@ -73,6 +74,7 @@ public class GameManager : MonoBehaviour
     public Image theDeliveringBuilding;
     public Image theItem;
     public Text theTime;
+    public Text theRewardMoney;
     public Text theTaskText;
     public Text theTaskNumber;
     public Text theCharacterName;
@@ -97,21 +99,35 @@ public class GameManager : MonoBehaviour
 
     #region Camera
     [Header("Camera Configuration")]
-    public int cameraStartingSize;
-    public int cameraMinSize;
-    public int cameraMaxSize;
+    public float cameraStartingSize;
+    public float cameraMinSize;
+    public float cameraMaxSize;
+    public float cameraChangeIndex;
     [HideInInspector]
-    public int currentCameraSize;
+    public float currentCameraSize;
 
     #endregion
 
     #region PlayerMood
-
-    public int currentMood;
+    [Header("Mood Configuration")]
     public int maxMood;
     public int minMood;
+    public Image veryHappy;
+    public Image Happy;
+    public Image Neutral;
+    public Image Sad;
+    public Image verySad;
 
+    [HideInInspector]
+    public int currentMood;
     #endregion
+
+    [Header("Money")]
+    public Text moneyUIDisplay;
+    [HideInInspector]
+    public int currentMoney;
+    [HideInInspector]
+    public int moneyToSum;
 
     [Header("Days Configuration")]
     public Day[] days;
@@ -124,14 +140,21 @@ public class GameManager : MonoBehaviour
         StartNewDay(currentDayIndex);
         theItemUI.gameObject.SetActive(false);
 
+        currentMood = 3;
+        UpdateMood();
+
         //Camera settings
         currentCameraSize = cameraStartingSize;
+
+        currentMoney = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
         Chronometer();
+
+        moneyUIDisplay.text = "$ " + currentMoney;
 
         if (taskFinished == true)
         {
@@ -161,6 +184,7 @@ public class GameManager : MonoBehaviour
             {
                 Debug.Log("Game Finished");
                 //Ending Sequence
+                StartCoroutine(DelayForGameFinishScreen());
             }
             else
             {
@@ -193,15 +217,18 @@ public class GameManager : MonoBehaviour
         if (itemDelivered == true)
         {
             itemDelivered = false;
+            
 
             if (currentCameraSize < cameraMaxSize)
             {
-                currentCameraSize++;
+                currentCameraSize += cameraChangeIndex;
             }
             else
             {
                 currentCameraSize = cameraMaxSize;
             }
+
+            MoodIncrement(1);//Im hard coing here I have to specify how much the mood is going to increment
         }
     }
 
@@ -211,6 +238,7 @@ public class GameManager : MonoBehaviour
         dayIntroText.text = "Día " + (currentDayIndex + 1).ToString();
         dayIntroGO.SetActive(true);
 
+        currentMood = 3;
         currentTaskIndex = 0;
         resumePanel.SetActive(false);
         currentDay = days[index];
@@ -229,6 +257,9 @@ public class GameManager : MonoBehaviour
         taskPanelActive = true;
         currentTask = currentDay.tasks[index];
         timeForTask = currentTask.newTimeForTask;
+
+        theRewardMoney.text = "$ "+ currentTask.newTaskReward;
+        moneyToSum = currentTask.newTaskReward;
 
         //Asigning the value to the current pickup point from the pickup values of the Task sub class
         pickUpPoint = currentTask.newPickUpPoint;
@@ -272,32 +303,24 @@ public class GameManager : MonoBehaviour
             }
             else//When the Timer reaches to CERO
             {
-                //Your mood lowers by 1
                 Debug.Log("Pedido no entregado.");
-                taskFinished = true;
                 timerON = false;
-
-                //Camera Zoom Out
-                if (currentCameraSize > cameraMinSize)
-                {
-                    currentCameraSize--;
-                }
-                else
-                {
-                    currentCameraSize = cameraMinSize;
-                }
 
                 PlayerController.instance.canMove = false;
                 var StopVelocity = PlayerController.instance.theRigidBody.velocity = new Vector2(0f, 0f);
                 PlayerController.instance.myAnim.SetFloat("moveX", StopVelocity.x);
                 PlayerController.instance.myAnim.SetFloat("moveY", StopVelocity.y);
 
+                StartCoroutine(DelayForNewTask());
                 StartCoroutine(DisableChronometer());
 
                 //Disable current pick and deliver points
                 Destroy(theCurrentPickUpPoint);
                 Destroy(PickUpSystem.instance.theCurrentDeliveryPoint);
                 theItemUI.gameObject.SetActive(false);
+
+                //Decrease Mood
+                MoodDamaged(1);//Im hard coding here but i have to specify how much damage to the mood is going to happen
             }
 
             //Change Timer color to Red
@@ -320,6 +343,116 @@ public class GameManager : MonoBehaviour
         if (vcam != null)
         {
             vcam.m_Lens.OrthographicSize = currentCameraSize;
+        }
+    }
+
+    public void MoodDamaged(int moodDecreased)
+    {
+        if (currentMood > 1)
+        {
+            currentMood -= moodDecreased;
+        }
+        else
+        {
+            currentMood = minMood;
+            //GameOVER
+            //Change to GameOverScene
+            SceneManager.LoadScene("GameOver");
+            Debug.Log("GAMEOVER");
+        }
+
+        UpdateMood();
+    }
+
+    public void MoodIncrement(int moodIncreased)
+    {
+        if (currentMood < 5)
+        {
+            currentMood += moodIncreased;
+        }
+        else
+        {
+            currentMood = maxMood;
+        }
+
+        UpdateMood();
+    }
+
+    public void UpdateMood()
+    {
+        switch (currentMood)
+        {
+            case 5:
+                veryHappy.gameObject.SetActive(true);
+                Happy.gameObject.SetActive(false);
+                Neutral.gameObject.SetActive(false);
+                Sad.gameObject.SetActive(false);
+                verySad.gameObject.SetActive(false);
+                return;
+
+            case 4:
+                veryHappy.gameObject.SetActive(false);
+                Happy.gameObject.SetActive(true);
+                Neutral.gameObject.SetActive(false);
+                Sad.gameObject.SetActive(false);
+                verySad.gameObject.SetActive(false);
+                return;
+
+            case 3:
+                veryHappy.gameObject.SetActive(false);
+                Happy.gameObject.SetActive(false);
+                Neutral.gameObject.SetActive(true);
+                Sad.gameObject.SetActive(false);
+                verySad.gameObject.SetActive(false);
+                return;
+
+            case 2:
+                veryHappy.gameObject.SetActive(false);
+                Happy.gameObject.SetActive(false);
+                Neutral.gameObject.SetActive(false);
+                Sad.gameObject.SetActive(true);
+                verySad.gameObject.SetActive(false);
+                return;
+
+            case 1:
+                veryHappy.gameObject.SetActive(false);
+                Happy.gameObject.SetActive(false);
+                Neutral.gameObject.SetActive(false);
+                Sad.gameObject.SetActive(false);
+                verySad.gameObject.SetActive(true);
+                return;
+
+            case 0:
+                veryHappy.gameObject.SetActive(false);
+                Happy.gameObject.SetActive(false);
+                Neutral.gameObject.SetActive(false);
+                Sad.gameObject.SetActive(false);
+                verySad.gameObject.SetActive(false);
+                return;
+
+            default:
+                veryHappy.gameObject.SetActive(false);
+                Happy.gameObject.SetActive(false);
+                Neutral.gameObject.SetActive(false);
+                Sad.gameObject.SetActive(false);
+                verySad.gameObject.SetActive(false);
+                return;
+        }
+    }
+
+    IEnumerator DelayForNewTask()
+    {
+        yield return new WaitForSeconds(2f);
+        taskFinished = true;
+
+        //Camera Zoom Out
+        if (currentCameraSize > cameraMinSize)
+        {
+            currentCameraSize -= cameraChangeIndex;
+        }
+        else
+        {
+            currentCameraSize = cameraMinSize;
         }
     }
 
@@ -348,6 +481,12 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         StartNewTask(currentTaskIndex);
+    }
+
+    IEnumerator DelayForGameFinishScreen()
+    {
+        yield return new WaitForSeconds(10f);
+        SceneManager.LoadScene("GameFinished");
     }
 }
 
@@ -382,6 +521,7 @@ public class Task
     public Sprite newDeliveringBuilding;
     public Sprite newItem;
     public string newCharacterName;
+    public int newTaskReward;
     [TextArea]
     public string newTaskText;
 

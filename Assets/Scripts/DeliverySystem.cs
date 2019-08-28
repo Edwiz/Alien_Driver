@@ -85,6 +85,7 @@ public class DeliverySystem : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         GameManager.instance.taskFinished = true;
+        GameManager.instance.currentMoney += GameManager.instance.moneyToSum;
         GameManager.instance.itemDelivered = true;
         gameObject.SetActive(false);
     }

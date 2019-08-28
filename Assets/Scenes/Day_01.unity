@@ -7816,7 +7816,7 @@ GameObject:
   - component: {fileID: 156318581}
   - component: {fileID: 156318580}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Money_text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9734,9 +9734,9 @@ RectTransform:
   m_Father: {fileID: 1643291392}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -170}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &603848761
@@ -9887,9 +9887,9 @@ RectTransform:
   m_Father: {fileID: 1643291392}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -140}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &638797624
@@ -10503,6 +10503,7 @@ MonoBehaviour:
   pickUpPoint: {fileID: 0}
   deliverPoint: {fileID: 0}
   itemDelivered: 0
+  theCurrentPickUpPoint: {fileID: 0}
   resumePanel: {fileID: 1413236381}
   theResumeCharacter: {fileID: 536503108}
   theResumeTitle: {fileID: 257489160}
@@ -10515,6 +10516,7 @@ MonoBehaviour:
   theDeliveringBuilding: {fileID: 177079976}
   theItem: {fileID: 1265711232}
   theTime: {fileID: 653723319}
+  theRewardMoney: {fileID: 1248808347}
   theTaskText: {fileID: 748919954}
   theTaskNumber: {fileID: 688322797}
   theCharacterName: {fileID: 975812863}
@@ -10522,9 +10524,21 @@ MonoBehaviour:
   timerText: {fileID: 1379260985}
   timerON: 0
   cameraStartingSize: 4
-  cameraMinSize: 2
-  cameraMaxSize: 6
+  cameraMinSize: 3
+  cameraMaxSize: 5
+  cameraChangeIndex: 0.5
   currentCameraSize: 0
+  maxMood: 5
+  minMood: 0
+  veryHappy: {fileID: 1801882102}
+  Happy: {fileID: 1526644452}
+  Neutral: {fileID: 1779255241}
+  Sad: {fileID: 638797624}
+  verySad: {fileID: 603848761}
+  currentMood: 0
+  moneyUIDisplay: {fileID: 156318580}
+  currentMoney: 0
+  moneyToSum: 0
   days:
   - dayNumber: Day_01
     newResumeCharacter: {fileID: 21300000, guid: 4946e23f24177cf4fb391f75a3ade451,
@@ -10535,7 +10549,7 @@ MonoBehaviour:
       a casa?"
     tasks:
     - taskNumber: Task_01
-      newTimeForTask: 20
+      newTimeForTask: 30
       newPickUpPoint: {fileID: 699888392}
       newDeliverPoint: {fileID: 153022160}
       newCharacter: {fileID: 21300000, guid: 343cffbe5d6ce444ca092132d86eaf07, type: 3}
@@ -10545,22 +10559,65 @@ MonoBehaviour:
         type: 3}
       newItem: {fileID: 21300000, guid: 83514111340831d4eb72956bb84cbbc2, type: 3}
       newCharacterName: "Do\xF1a Cleo"
+      newTaskReward: 500
       newTaskText: "Joven, mi hijo necesita esta pi\xF1ata para la posada de su empresa.
         \xA1Si no la lleva, lo despiden!"
-    - taskNumber: Task_02
-      newTimeForTask: 20
-      newPickUpPoint: {fileID: 401583715}
-      newDeliverPoint: {fileID: 921348171}
-      newCharacter: {fileID: 21300000, guid: e41198b69ef695845a323b10e8941512, type: 3}
+    - taskNumber: Task_01
+      newTimeForTask: 30
+      newPickUpPoint: {fileID: 699888392}
+      newDeliverPoint: {fileID: 153022160}
+      newCharacter: {fileID: 21300000, guid: 343cffbe5d6ce444ca092132d86eaf07, type: 3}
       newPickingBuilding: {fileID: 21300000, guid: a1e12ef5753cdad47bea66528b474c5b,
         type: 3}
       newDeliveringBuilding: {fileID: 21300000, guid: a1e12ef5753cdad47bea66528b474c5b,
         type: 3}
-      newItem: {fileID: 21300000, guid: 8473f3fb9ce977743a6aa10b57737441, type: 3}
-      newCharacterName: Super Hero
-      newTaskText: 'Ve por esto...
-
-'
+      newItem: {fileID: 21300000, guid: 83514111340831d4eb72956bb84cbbc2, type: 3}
+      newCharacterName: "Do\xF1a Cleo"
+      newTaskReward: 500
+      newTaskText: "Joven, mi hijo necesita esta pi\xF1ata para la posada de su empresa.
+        \xA1Si no la lleva, lo despiden!"
+    - taskNumber: Task_01
+      newTimeForTask: 30
+      newPickUpPoint: {fileID: 699888392}
+      newDeliverPoint: {fileID: 153022160}
+      newCharacter: {fileID: 21300000, guid: 343cffbe5d6ce444ca092132d86eaf07, type: 3}
+      newPickingBuilding: {fileID: 21300000, guid: a1e12ef5753cdad47bea66528b474c5b,
+        type: 3}
+      newDeliveringBuilding: {fileID: 21300000, guid: a1e12ef5753cdad47bea66528b474c5b,
+        type: 3}
+      newItem: {fileID: 21300000, guid: 83514111340831d4eb72956bb84cbbc2, type: 3}
+      newCharacterName: "Do\xF1a Cleo"
+      newTaskReward: 500
+      newTaskText: "Joven, mi hijo necesita esta pi\xF1ata para la posada de su empresa.
+        \xA1Si no la lleva, lo despiden!"
+    - taskNumber: Task_01
+      newTimeForTask: 30
+      newPickUpPoint: {fileID: 699888392}
+      newDeliverPoint: {fileID: 153022160}
+      newCharacter: {fileID: 21300000, guid: 343cffbe5d6ce444ca092132d86eaf07, type: 3}
+      newPickingBuilding: {fileID: 21300000, guid: a1e12ef5753cdad47bea66528b474c5b,
+        type: 3}
+      newDeliveringBuilding: {fileID: 21300000, guid: a1e12ef5753cdad47bea66528b474c5b,
+        type: 3}
+      newItem: {fileID: 21300000, guid: 83514111340831d4eb72956bb84cbbc2, type: 3}
+      newCharacterName: "Do\xF1a Cleo"
+      newTaskReward: 500
+      newTaskText: "Joven, mi hijo necesita esta pi\xF1ata para la posada de su empresa.
+        \xA1Si no la lleva, lo despiden!"
+    - taskNumber: Task_01
+      newTimeForTask: 30
+      newPickUpPoint: {fileID: 699888392}
+      newDeliverPoint: {fileID: 153022160}
+      newCharacter: {fileID: 21300000, guid: 343cffbe5d6ce444ca092132d86eaf07, type: 3}
+      newPickingBuilding: {fileID: 21300000, guid: a1e12ef5753cdad47bea66528b474c5b,
+        type: 3}
+      newDeliveringBuilding: {fileID: 21300000, guid: a1e12ef5753cdad47bea66528b474c5b,
+        type: 3}
+      newItem: {fileID: 21300000, guid: 83514111340831d4eb72956bb84cbbc2, type: 3}
+      newCharacterName: "Do\xF1a Cleo"
+      newTaskReward: 500
+      newTaskText: "Joven, mi hijo necesita esta pi\xF1ata para la posada de su empresa.
+        \xA1Si no la lleva, lo despiden!"
 --- !u!4 &695957521
 Transform:
   m_ObjectHideFlags: 0
@@ -20264,7 +20321,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1031639439
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20705,6 +20762,85 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1200655384}
+  m_CullTransparentMesh: 0
+--- !u!1 &1248808345
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1248808346}
+  - component: {fileID: 1248808348}
+  - component: {fileID: 1248808347}
+  m_Layer: 5
+  m_Name: Reward_text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1248808346
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248808345}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1509166474}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -82, y: 18}
+  m_SizeDelta: {x: 88.85, y: 13.48}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1248808347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248808345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 646251a0f2204cc4ab30ccb9fce221f5, type: 3}
+    m_FontSize: 9
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 300
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: New Text
+--- !u!222 &1248808348
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1248808345}
   m_CullTransparentMesh: 0
 --- !u!1 &1254954050
 GameObject:
@@ -21304,7 +21440,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1413236382
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21654,6 +21790,80 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1505689076
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1505689077}
+  - component: {fileID: 1505689079}
+  - component: {fileID: 1505689078}
+  m_Layer: 5
+  m_Name: Reward_box
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1505689077
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1505689076}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1509166474}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -81.879974, y: 18.1}
+  m_SizeDelta: {x: 55.73, y: 17.32}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1505689078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1505689076}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: a711b2fc6c106404bb80ab344dfd117a, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &1505689079
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1505689076}
+  m_CullTransparentMesh: 0
 --- !u!1 &1509166473
 GameObject:
   m_ObjectHideFlags: 0
@@ -21697,6 +21907,8 @@ RectTransform:
   - {fileID: 653723318}
   - {fileID: 508274467}
   - {fileID: 1265711230}
+  - {fileID: 1505689077}
+  - {fileID: 1248808346}
   m_Father: {fileID: 1787906897}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -21932,9 +22144,9 @@ RectTransform:
   m_Father: {fileID: 1643291392}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -80}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1526644452
@@ -22571,7 +22783,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1643291392}
-  - component: {fileID: 1643291393}
   m_Layer: 5
   m_Name: Face_icons
   m_TagString: Untagged
@@ -22603,29 +22814,6 @@ RectTransform:
   m_AnchoredPosition: {x: -2, y: 62.7}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1643291393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1643291391}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1297475563, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Padding:
-    m_Left: 0
-    m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
-  m_ChildAlignment: 0
-  m_Spacing: -70
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
-  m_ChildControlWidth: 0
-  m_ChildControlHeight: 0
 --- !u!1 &1660443686
 GameObject:
   m_ObjectHideFlags: 0
@@ -23276,9 +23464,9 @@ RectTransform:
   m_Father: {fileID: 1643291392}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -110}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1779255241
@@ -23491,9 +23679,9 @@ RectTransform:
   m_Father: {fileID: 1643291392}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 50, y: -50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1801882102
@@ -23684,6 +23872,7 @@ MonoBehaviour:
   diagonalMoveSpeed: 0.8
   acceleration: 4.5
   brakeTime: 2
+  playerMoods: 0
   theRigidBody: {fileID: 1857004911}
   myAnim: {fileID: 1857004912}
 --- !u!61 &1857004910

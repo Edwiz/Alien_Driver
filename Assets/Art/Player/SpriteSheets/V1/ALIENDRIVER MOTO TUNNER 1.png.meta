@@ -1,0 +1,552 @@
+fileFormatVersion: 2
+guid: 3c3b65b1da4ad9640a60a79a3d01bfff
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: ALIENDRIVER MOTO TUNNER 1_0
+    21300002: ALIENDRIVER MOTO TUNNER 1_1
+    21300004: ALIENDRIVER MOTO TUNNER 1_2
+    21300006: ALIENDRIVER MOTO TUNNER 1_3
+    21300008: ALIENDRIVER MOTO TUNNER 1_4
+    21300010: ALIENDRIVER MOTO TUNNER 1_5
+    21300012: ALIENDRIVER MOTO TUNNER 1_6
+    21300014: ALIENDRIVER MOTO TUNNER 1_7
+    21300016: ALIENDRIVER MOTO TUNNER 1_8
+    21300018: ALIENDRIVER MOTO TUNNER 1_9
+    21300020: ALIENDRIVER MOTO TUNNER 1_10
+    21300022: ALIENDRIVER MOTO TUNNER 1_11
+    21300024: ALIENDRIVER MOTO TUNNER 1_12
+    21300026: ALIENDRIVER MOTO TUNNER 1_13
+    21300028: ALIENDRIVER MOTO TUNNER 1_14
+    21300030: ALIENDRIVER MOTO TUNNER 1_15
+    21300032: ALIENDRIVER MOTO TUNNER 1_16
+    21300034: ALIENDRIVER MOTO TUNNER 1_17
+    21300036: ALIENDRIVER MOTO TUNNER 1_18
+    21300038: ALIENDRIVER MOTO TUNNER 1_19
+  externalObjects: {}
+  serializedVersion: 9
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 0
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 800
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 2
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - serializedVersion: 2
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ALIENDRIVER MOTO TUNNER 1_0
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 2137
+        width: 626
+        height: 747
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b87b1f7c2f971040a645e4aad23db37
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALIENDRIVER MOTO TUNNER 1_1
+      rect:
+        serializedVersion: 2
+        x: 1237
+        y: 2137
+        width: 626
+        height: 734
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f35ab6a8eb7386a4ba53a39a7b8185c7
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALIENDRIVER MOTO TUNNER 1_2
+      rect:
+        serializedVersion: 2
+        x: 1961
+        y: 2137
+        width: 630
+        height: 747
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ea9043c61bb8ef43be97f0d26bc5975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALIENDRIVER MOTO TUNNER 1_3
+      rect:
+        serializedVersion: 2
+        x: 2678
+        y: 2137
+        width: 625
+        height: 734
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 165a58b2e3c6f3545b0987320191cf77
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALIENDRIVER MOTO TUNNER 1_4
+      rect:
+        serializedVersion: 2
+        x: 3410
+        y: 2137
+        width: 625
+        height: 747
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 988dc320d6ff9ca4ca7212f2cb8500b2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALIENDRIVER MOTO TUNNER 1_5
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 1363
+        width: 625
+        height: 745
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 016710dc03ab8df4a91592b8b1fc4af2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALIENDRIVER MOTO TUNNER 1_6
+      rect:
+        serializedVersion: 2
+        x: 1205
+        y: 1363
+        width: 625
+        height: 734
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25ec5a4b2f96dfe48aba3b54f30624d2
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALIENDRIVER MOTO TUNNER 1_7
+      rect:
+        serializedVersion: 2
+        x: 1917
+        y: 1363
+        width: 630
+        height: 747
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3830c71bafad8fe4ea9e61e2ecad0f33
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALIENDRIVER MOTO TUNNER 1_8
+      rect:
+        serializedVersion: 2
+        x: 2645
+        y: 1363
+        width: 627
+        height: 734
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3d69e8c8d292284b8aa6e22a53a65a3
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALIENDRIVER MOTO TUNNER 1_9
+      rect:
+        serializedVersion: 2
+        x: 3338
+        y: 1363
+        width: 627
+        height: 745
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccc158f2b0007e34c98a31b793df40f6
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALIENDRIVER MOTO TUNNER 1_10
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 759
+        width: 743
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67c0ace615ff9f343aaeeacaea9d9904
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALIENDRIVER MOTO TUNNER 1_11
+      rect:
+        serializedVersion: 2
+        x: 1001
+        y: 746
+        width: 744
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90b34d24d6b2e6441952eb0245278b4b
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALIENDRIVER MOTO TUNNER 1_12
+      rect:
+        serializedVersion: 2
+        x: 1835
+        y: 759
+        width: 747
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afc017190d3ebb245a03f950f770d75d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALIENDRIVER MOTO TUNNER 1_13
+      rect:
+        serializedVersion: 2
+        x: 2665
+        y: 759
+        width: 742
+        height: 509
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be4e17dc2ac9f784b84e7ef802776b0d
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALIENDRIVER MOTO TUNNER 1_14
+      rect:
+        serializedVersion: 2
+        x: 3492
+        y: 759
+        width: 743
+        height: 522
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e525e00ca6500224d92c064ab3ace4b1
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALIENDRIVER MOTO TUNNER 1_15
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 151
+        width: 745
+        height: 521
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebcfa0d03acd38a48aa9ed0b03735411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALIENDRIVER MOTO TUNNER 1_16
+      rect:
+        serializedVersion: 2
+        x: 966
+        y: 151
+        width: 743
+        height: 508
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de5179ca2261ce34f9dbe22a5820574e
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALIENDRIVER MOTO TUNNER 1_17
+      rect:
+        serializedVersion: 2
+        x: 1791
+        y: 151
+        width: 747
+        height: 521
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a5030795cda5564ab4b64b9c84f93ab
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALIENDRIVER MOTO TUNNER 1_18
+      rect:
+        serializedVersion: 2
+        x: 2628
+        y: 138
+        width: 745
+        height: 521
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4aa2d42023cb3f4cb3bdf8511ad9751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ALIENDRIVER MOTO TUNNER 1_19
+      rect:
+        serializedVersion: 2
+        x: 3492
+        y: 151
+        width: 743
+        height: 521
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa8d5ff6ff67f6b49a8f8faf7706fb98
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 386a375ba523a6d4b8d1a81ffd25b372
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

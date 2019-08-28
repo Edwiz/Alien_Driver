@@ -27,6 +27,8 @@ public class PickUpSystem : MonoBehaviour
 
     #endregion
 
+    public GameObject theCurrentDeliveryPoint;
+
     public void Start()
     {
         instance = this;
@@ -47,11 +49,10 @@ public class PickUpSystem : MonoBehaviour
         if (timeCounter < 0 && insideArea == true)
         {
             Debug.Log("Item Picked");
-
+            GameManager.instance.theItemUI.gameObject.SetActive(true);
             //Instantiate the deliver point
-            Instantiate(m_delivery, m_deliveryPoint.position, Quaternion.identity);
-
-            gameObject.SetActive(false); //maybe because of this it wont instantiate
+            theCurrentDeliveryPoint = Instantiate(m_delivery, m_deliveryPoint.position, Quaternion.identity);
+            gameObject.SetActive(false);
         }
     }
 

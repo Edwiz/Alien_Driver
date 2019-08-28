@@ -40,16 +40,15 @@ public class DeliverySystem : MonoBehaviour
             timeCounter -= Time.deltaTime;
         }
 
-        if (timeCounter < 0 && insideArea == true)
+        if (timeCounter < 0 && insideArea == true && GameManager.instance.itemDelivered == false)
         {
             Debug.Log("Item Delivered");
-            itemDelivered = true;
+            GameManager.instance.theItemUI.gameObject.SetActive(false);
             PlayerController.instance.canMove = false;
             deliverSpriteRenderer.color = new Color(1, 1, 1, 0);
             GameManager.instance.timerON = false;
             Debug.Log("Initiate another task");
             StartCoroutine(EndingTask());
-
         }
     }
 
@@ -86,6 +85,7 @@ public class DeliverySystem : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         GameManager.instance.taskFinished = true;
+        GameManager.instance.itemDelivered = true;
         gameObject.SetActive(false);
     }
 }

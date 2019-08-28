@@ -15,8 +15,10 @@ public class PlayerController : MonoBehaviour
     public float diagonalMoveSpeed;
     [Range(0, 10)]
     public float acceleration;
-    [Range(1, 10)]
+    [Range(0.2f, 10)]
     public float brakeTime;
+
+    public int playerMoods;
 
     [Header("Components")]
     //Cached Variables
@@ -48,10 +50,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(theRigidBody.velocity);
-
-        if (speedIncrement > 0 && (Input.GetAxis("Acceleration") == 0 || Input.GetButtonUp("Fire1")))
+        if (speedIncrement > 0 && !Input.GetButton("Fire1"))
         {
+            Debug.Log("isBreaking");
             speedIncrement -= Time.deltaTime * brakeTime;
         }
     }
@@ -61,7 +62,7 @@ public class PlayerController : MonoBehaviour
         xInput = Input.GetAxisRaw("Horizontal");
         yInput = Input.GetAxisRaw("Vertical");
 
-        if (Input.GetAxisRaw("Acceleration") == 1 || Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1"))
         {
             speedIncrement = acceleration;
         }

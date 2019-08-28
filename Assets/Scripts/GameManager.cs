@@ -2,29 +2,66 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Cinemachine;
 
 public class GameManager : MonoBehaviour
 {
     #region GeneralFields
     public static GameManager instance;
 
+    [HideInInspector]
+    public bool dayIsFinished;
+    [HideInInspector]
+    public Transform theStartingPoint;
+
     [Header("Indication Points")]
+
     //Cached Variables
+    [Tooltip("Place the prefab for indicating the picking point")]
     public GameObject pickUpGO;
+    [Tooltip("Place the prefab for indicating the delivering point")]
     public GameObject deliverGO;
+
+    [Header("UI")]
+    public GameObject dayIntroGO;
+    public Text dayIntroText;
+    public Image theItemUI;
 
     //Variables that need to be public for another script to access them
     [HideInInspector]
     public int currentTaskIndex;
+    [HideInInspector]
+    public int currentDayIndex;
     [HideInInspector]
     public bool taskFinished;
     [HideInInspector]
     public Transform pickUpPoint;
     [HideInInspector]
     public Transform deliverPoint;
+    [HideInInspector]
+    public bool itemDelivered;
+    [HideInInspector]
+    public GameObject theCurrentPickUpPoint;
 
     //Private Variables
     private Task currentTask;
+    private Day currentDay;
+    private bool readyToStartNewDay;
+    #endregion
+
+    #region Resume_Panel
+
+    [Header("Resume Panel Configuration")]
+
+    public GameObject resumePanel;
+
+    public Image theResumeCharacter;
+    public Text theResumeTitle;
+    public Text theResumeCompletedTasksText;
+    public Text theResumeDayText;
+
+    [HideInInspector]
+    public bool resumePanelisActive;
     #endregion
 
     #region TaskPanel
@@ -38,9 +75,10 @@ public class GameManager : MonoBehaviour
     public Text theTime;
     public Text theTaskText;
     public Text theTaskNumber;
+    public Text theCharacterName;
 
     [HideInInspector]
-    public bool panelActive;
+    public bool taskPanelActive;
     #endregion
 
     #region Timer
@@ -57,22 +95,42 @@ public class GameManager : MonoBehaviour
     private string timeCounter;
     #endregion
 
-    [Header("Tasks Configuration")]
-    public Task[] tasks;
+    #region Camera
+    [Header("Camera Configuration")]
+    public int cameraStartingSize;
+    public int cameraMinSize;
+    public int cameraMaxSize;
+    [HideInInspector]
+    public int currentCameraSize;
+
+    #endregion
+
+    #region PlayerMood
+
+    public int currentMood;
+    public int maxMood;
+    public int minMood;
+
+    #endregion
+
+    [Header("Days Configuration")]
+    public Day[] days;
 
     // Start is called before the first frame update
     void Start()
     {
         instance = this;
-        currentTaskIndex = 0;
-        StartNewTask(currentTaskIndex);
+        currentDayIndex = 0;
+        StartNewDay(currentDayIndex);
+        theItemUI.gameObject.SetActive(false);
+
+        //Camera settings
+        currentCameraSize = cameraStartingSize;
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(currentTaskIndex);
-
         Chronometer();
 
         if (taskFinished == true)
@@ -80,12 +138,12 @@ public class GameManager : MonoBehaviour
             taskFinished = false;
             currentTaskIndex++;
 
-            if (currentTaskIndex >= tasks.Length)
+            if (currentTaskIndex >= currentDay.tasks.Length)
             {
-                Debug.Log("Game Finished");
                 timerON = false;
                 PlayerController.instance.canMove = false;
                 StartCoroutine(DisableChronometer());
+                StartCoroutine(FinishingDay());
             }
             else
             {
@@ -93,7 +151,24 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (panelActive == true)
+        if (dayIsFinished == true)
+        {
+            dayIsFinished = false;
+            resumePanel.SetActive(true);
+            currentDayIndex++;
+
+            if (currentDayIndex >= days.Length)
+            {
+                Debug.Log("Game Finished");
+                //Ending Sequence
+            }
+            else
+            {
+                StartCoroutine(TimeForStartingNewDay());
+            }
+        }
+
+        if (taskPanelActive == true)
         {
             taskPanel.SetActive(true);
             timerText.gameObject.SetActive(false);
@@ -101,8 +176,9 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.X))
             {
                 timerON = true;
-                Instantiate(pickUpGO, pickUpPoint.position, Quaternion.identity);
-                panelActive = false;
+                theCurrentPickUpPoint = Instantiate(pickUpGO, pickUpPoint.position, Quaternion.identity);
+                taskPanelActive = false;
+                dayIntroGO.SetActive(false);
                 PlayerController.instance.canMove = true;
             }
         }
@@ -110,12 +186,48 @@ public class GameManager : MonoBehaviour
         {
             taskPanel.SetActive(false);
         }
+
+        CameraSize();
+
+        //Camera increasing
+        if (itemDelivered == true)
+        {
+            itemDelivered = false;
+
+            if (currentCameraSize < cameraMaxSize)
+            {
+                currentCameraSize++;
+            }
+            else
+            {
+                currentCameraSize = cameraMaxSize;
+            }
+        }
+    }
+
+    public void StartNewDay(int index)
+    {
+        //Beggining Day
+        dayIntroText.text = "Día " + (currentDayIndex + 1).ToString();
+        dayIntroGO.SetActive(true);
+
+        currentTaskIndex = 0;
+        resumePanel.SetActive(false);
+        currentDay = days[index];
+        theStartingPoint = currentDay.newStartingPoint;
+
+        //Day Ending Panel
+        theResumeCharacter.sprite = currentDay.newResumeCharacter;
+        theResumeTitle.text = "Resumen del día "+ (currentDayIndex + 1).ToString();
+        theResumeDayText.text = currentDay.newDayResumeText;
+
+        StartCoroutine(DelayForStartingFirstTask());
     }
 
     public void StartNewTask(int index)
     {
-        panelActive = true;
-        currentTask = tasks[index];
+        taskPanelActive = true;
+        currentTask = currentDay.tasks[index];
         timeForTask = currentTask.newTimeForTask;
 
         //Asigning the value to the current pickup point from the pickup values of the Task sub class
@@ -127,6 +239,7 @@ public class GameManager : MonoBehaviour
         theDeliveringBuilding.sprite = currentTask.newDeliveringBuilding;
         theItem.sprite = currentTask.newItem;
         theTaskText.text = currentTask.newTaskText;
+        theCharacterName.text = currentTask.newCharacterName;
         //theTime.text = currentTask.newTimeForTask.ToString(); //Se van a mostrar los segundo porque no hay formato
         int minutes = Mathf.FloorToInt(timeForTask / 60F);
         int seconds = Mathf.FloorToInt(timeForTask - minutes * 60);
@@ -136,6 +249,9 @@ public class GameManager : MonoBehaviour
 
         //Asigning the value to the current deliver point from the deliver values of the Task sub class
         deliverPoint = currentTask.newDeliverPoint;
+
+        //Asigning UI elements
+        theItemUI.sprite = currentTask.newItem;
     }
 
     #region TimerMethod
@@ -150,14 +266,38 @@ public class GameManager : MonoBehaviour
             timeCounter = string.Format("{0:00}:{1:00}", minutes, seconds);
             timerText.text = timeCounter.ToString();
 
-            if (timeForTask > 1 && !panelActive)
+            if (timeForTask > 1 && !taskPanelActive)
             {
                 timeForTask -= Time.deltaTime;
             }
-            else
+            else//When the Timer reaches to CERO
             {
+                //Your mood lowers by 1
+                Debug.Log("Pedido no entregado.");
+                taskFinished = true;
                 timerON = false;
+
+                //Camera Zoom Out
+                if (currentCameraSize > cameraMinSize)
+                {
+                    currentCameraSize--;
+                }
+                else
+                {
+                    currentCameraSize = cameraMinSize;
+                }
+
+                PlayerController.instance.canMove = false;
+                var StopVelocity = PlayerController.instance.theRigidBody.velocity = new Vector2(0f, 0f);
+                PlayerController.instance.myAnim.SetFloat("moveX", StopVelocity.x);
+                PlayerController.instance.myAnim.SetFloat("moveY", StopVelocity.y);
+
                 StartCoroutine(DisableChronometer());
+
+                //Disable current pick and deliver points
+                Destroy(theCurrentPickUpPoint);
+                Destroy(PickUpSystem.instance.theCurrentDeliveryPoint);
+                theItemUI.gameObject.SetActive(false);
             }
 
             //Change Timer color to Red
@@ -172,12 +312,57 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    void CameraSize()
+    {
+        var camera = Camera.main;
+        var brain = (camera == null) ? null : camera.GetComponent<CinemachineBrain>();
+        var vcam = (brain == null) ? null : brain.ActiveVirtualCamera as CinemachineVirtualCamera;
+        if (vcam != null)
+        {
+            vcam.m_Lens.OrthographicSize = currentCameraSize;
+        }
+    }
+
     IEnumerator DisableChronometer()
     {
         yield return new WaitForSeconds(2f);
         timerText.gameObject.SetActive(false);
     }
     #endregion
+
+    IEnumerator FinishingDay()
+    {
+        yield return new WaitForSeconds(2f);
+        dayIsFinished = true;
+    }
+
+    IEnumerator TimeForStartingNewDay()
+    {
+        yield return new WaitForSeconds(5);
+        {
+            StartNewDay(currentDayIndex);
+        }
+    }
+
+    IEnumerator DelayForStartingFirstTask()
+    {
+        yield return new WaitForSeconds(2);
+        StartNewTask(currentTaskIndex);
+    }
+}
+
+
+[System.Serializable]
+public class Day
+{
+    [Header("Day number")]
+    public string dayNumber;
+    public Sprite newResumeCharacter;
+    public Transform newStartingPoint;
+    [TextArea]
+    public string newDayResumeText;
+
+    public Task[] tasks;
 }
 
 [System.Serializable]
@@ -196,5 +381,12 @@ public class Task
     public Sprite newPickingBuilding;
     public Sprite newDeliveringBuilding;
     public Sprite newItem;
+    public string newCharacterName;
+    [TextArea]
     public string newTaskText;
+
+    //A variable that stores the container wich the virtual camera uses.
+    //An array of Transforms where there are going to be obstacles
+    //An array of obstacles
+
 }

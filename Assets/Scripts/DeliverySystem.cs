@@ -28,7 +28,7 @@ public class DeliverySystem : MonoBehaviour
     {
         instance = this;
         theAnimator = GetComponent<Animator>();
-        deliverSpriteRenderer = GetComponent<SpriteRenderer>();
+        deliverSpriteRenderer = GetComponentInChildren<SpriteRenderer>();
     }
 
     public void Update()
@@ -83,7 +83,7 @@ public class DeliverySystem : MonoBehaviour
 
     IEnumerator EndingTask()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(GameManager.instance.waitForNewTask);
         GameManager.instance.taskFinished = true;
         GameManager.instance.currentMoney += GameManager.instance.moneyToSum;
         GameManager.instance.itemDelivered = true;

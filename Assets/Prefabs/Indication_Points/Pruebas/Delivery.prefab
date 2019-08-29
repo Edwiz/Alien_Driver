@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6967490381053189706}
   m_Layer: 0
   m_Name: Delivery
-  m_TagString: Untagged
+  m_TagString: Indicator
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -69,7 +69,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1105689555
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300002, guid: d4f74f6ea5c489246b66509a257a73ec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -99,7 +99,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.215, y: 1.1666666}
+    oldSize: {x: 0.91125, y: 0.875}
     newSize: {x: 7.29, y: 6.99}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Indicator
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -46,6 +48,9 @@ TagManager:
     locked: 0
   - name: Points
     uniqueID: 3189277741
+    locked: 0
+  - name: Obstacles
+    uniqueID: 3336923887
     locked: 0
   - name: Player
     uniqueID: 1801913407

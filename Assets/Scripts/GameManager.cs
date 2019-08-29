@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     #region GeneralFields
     public static GameManager instance;
 
+    public float waitForNewTask;
+
     [HideInInspector]
     public bool dayIsFinished;
     [HideInInspector]
@@ -31,8 +33,7 @@ public class GameManager : MonoBehaviour
     //Variables that need to be public for another script to access them
     [HideInInspector]
     public int currentTaskIndex;
-    [HideInInspector]
-    public int currentDayIndex;
+
     [HideInInspector]
     public bool taskFinished;
     [HideInInspector]
@@ -46,7 +47,6 @@ public class GameManager : MonoBehaviour
 
     //Private Variables
     private Task currentTask;
-    private Day currentDay;
     private bool readyToStartNewDay;
     #endregion
 
@@ -60,6 +60,9 @@ public class GameManager : MonoBehaviour
     public Text theResumeTitle;
     public Text theResumeCompletedTasksText;
     public Text theResumeDayText;
+
+    [HideInInspector]
+    public int completedTasks;
 
     [HideInInspector]
     public bool resumePanelisActive;
@@ -105,7 +108,6 @@ public class GameManager : MonoBehaviour
     public float cameraChangeIndex;
     [HideInInspector]
     public float currentCameraSize;
-
     #endregion
 
     #region PlayerMood
@@ -122,15 +124,31 @@ public class GameManager : MonoBehaviour
     public int currentMood;
     #endregion
 
+    #region Money
     [Header("Money")]
     public Text moneyUIDisplay;
     [HideInInspector]
     public int currentMoney;
     [HideInInspector]
     public int moneyToSum;
+    #endregion
+
+    [Header("Obstacles")]
+    public GameObject obstacle;
+    [HideInInspector]
+    public int obstacleCount;
 
     [Header("Days Configuration")]
     public Day[] days;
+
+    public GameObject directionArrow;
+    private GameObject target;
+    private Transform targetPos;
+    [HideInInspector]
+    public int currentDayIndex;
+    [HideInInspector]
+    public Day currentDay;
+
 
     // Start is called before the first frame update
     void Start()
@@ -147,11 +165,15 @@ public class GameManager : MonoBehaviour
         currentCameraSize = cameraStartingSize;
 
         currentMoney = 0;
+
+        completedTasks = 0;
     }
 
+    
     // Update is called once per frame
     void Update()
     {
+
         Chronometer();
 
         moneyUIDisplay.text = "$ " + currentMoney;
@@ -160,6 +182,7 @@ public class GameManager : MonoBehaviour
         {
             taskFinished = false;
             currentTaskIndex++;
+            DestroyObstacles();
 
             if (currentTaskIndex >= currentDay.tasks.Length)
             {
@@ -213,11 +236,12 @@ public class GameManager : MonoBehaviour
 
         CameraSize();
 
-        //Camera increasing
+        //Camera increasing and counting deliveries
         if (itemDelivered == true)
         {
+            completedTasks++;
             itemDelivered = false;
-            
+            theResumeCompletedTasksText.text = "Pedidos Completados: " + completedTasks + " / " + currentDay.tasks.Length;
 
             if (currentCameraSize < cameraMaxSize)
             {
@@ -229,6 +253,17 @@ public class GameManager : MonoBehaviour
             }
 
             MoodIncrement(1);//Im hard coing here I have to specify how much the mood is going to increment
+
+        }
+    }
+
+    public void DestroyObstacles()
+    {
+        GameObject[] obstaclesToDestroy = GameObject.FindGameObjectsWithTag("Obstacle");
+
+        for (int i = 0; i < obstaclesToDestroy.Length; i++)
+        {
+            Destroy(obstaclesToDestroy[i]);
         }
     }
 
@@ -249,6 +284,7 @@ public class GameManager : MonoBehaviour
         theResumeTitle.text = "Resumen del día "+ (currentDayIndex + 1).ToString();
         theResumeDayText.text = currentDay.newDayResumeText;
 
+
         StartCoroutine(DelayForStartingFirstTask());
     }
 
@@ -257,6 +293,8 @@ public class GameManager : MonoBehaviour
         taskPanelActive = true;
         currentTask = currentDay.tasks[index];
         timeForTask = currentTask.newTimeForTask;
+        obstacleCount = currentTask.newObstacles.Length;
+
 
         theRewardMoney.text = "$ "+ currentTask.newTaskReward;
         moneyToSum = currentTask.newTaskReward;
@@ -283,6 +321,16 @@ public class GameManager : MonoBehaviour
 
         //Asigning UI elements
         theItemUI.sprite = currentTask.newItem;
+
+        //Instantiate obstacles
+
+        for (int i = 0; i < obstacleCount; i++)
+        {
+            Transform obstaclePosition = currentTask.newObstacles[i];
+
+            Instantiate(obstacle, obstaclePosition.position, Quaternion.identity);
+        }
+
     }
 
     #region TimerMethod
@@ -334,6 +382,7 @@ public class GameManager : MonoBehaviour
             }
         }
     }
+    #endregion
 
     void CameraSize()
     {
@@ -383,43 +432,73 @@ public class GameManager : MonoBehaviour
         switch (currentMood)
         {
             case 5:
-                veryHappy.gameObject.SetActive(true);
+                /*veryHappy.gameObject.SetActive(true);
                 Happy.gameObject.SetActive(false);
                 Neutral.gameObject.SetActive(false);
                 Sad.gameObject.SetActive(false);
-                verySad.gameObject.SetActive(false);
+                verySad.gameObject.SetActive(false);*/
+
+                veryHappy.color = new Color(1, 1, 1, 1);
+                Happy.color = new Color(1, 1, 1, 0.2f);
+                Neutral.color = new Color(1, 1, 1, 0.2f);
+                Sad.color = new Color(1, 1, 1, 0.2f);
+                verySad.color = new Color(1, 1, 1, 0.2f);
                 return;
 
             case 4:
-                veryHappy.gameObject.SetActive(false);
+                /*veryHappy.gameObject.SetActive(false);
                 Happy.gameObject.SetActive(true);
                 Neutral.gameObject.SetActive(false);
                 Sad.gameObject.SetActive(false);
-                verySad.gameObject.SetActive(false);
+                verySad.gameObject.SetActive(false);*/
+
+                veryHappy.color = new Color(1, 1, 1, 0.2f);
+                Happy.color = new Color(1, 1, 1, 1);
+                Neutral.color = new Color(1, 1, 1, 0.2f);
+                Sad.color = new Color(1, 1, 1, 0.2f);
+                verySad.color = new Color(1, 1, 1, 0.2f);
                 return;
 
             case 3:
-                veryHappy.gameObject.SetActive(false);
+                /*veryHappy.gameObject.SetActive(false);
                 Happy.gameObject.SetActive(false);
                 Neutral.gameObject.SetActive(true);
                 Sad.gameObject.SetActive(false);
-                verySad.gameObject.SetActive(false);
+                verySad.gameObject.SetActive(false);*/
+
+                veryHappy.color = new Color(1, 1, 1, 0.2f);
+                Happy.color = new Color(1, 1, 1, 0.2f);
+                Neutral.color = new Color(1, 1, 1, 1f);
+                Sad.color = new Color(1, 1, 1, 0.2f);
+                verySad.color = new Color(1, 1, 1, 0.2f);
                 return;
 
             case 2:
-                veryHappy.gameObject.SetActive(false);
+                /*veryHappy.gameObject.SetActive(false);
                 Happy.gameObject.SetActive(false);
                 Neutral.gameObject.SetActive(false);
                 Sad.gameObject.SetActive(true);
-                verySad.gameObject.SetActive(false);
+                verySad.gameObject.SetActive(false);*/
+
+                veryHappy.color = new Color(1, 1, 1, 0.2f);
+                Happy.color = new Color(1, 1, 1, 0.2f);
+                Neutral.color = new Color(1, 1, 1, 0.2f);
+                Sad.color = new Color(1, 1, 1, 1f);
+                verySad.color = new Color(1, 1, 1, 0.2f);
                 return;
 
             case 1:
-                veryHappy.gameObject.SetActive(false);
+                /*veryHappy.gameObject.SetActive(false);
                 Happy.gameObject.SetActive(false);
                 Neutral.gameObject.SetActive(false);
                 Sad.gameObject.SetActive(false);
-                verySad.gameObject.SetActive(true);
+                verySad.gameObject.SetActive(true);*/
+
+                veryHappy.color = new Color(1, 1, 1, 0.2f);
+                Happy.color = new Color(1, 1, 1, 0.2f);
+                Neutral.color = new Color(1, 1, 1, 0.2f);
+                Sad.color = new Color(1, 1, 1, 0.2f);
+                verySad.color = new Color(1, 1, 1, 1);
                 return;
 
             case 0:
@@ -440,9 +519,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    #region CoRoutines
+
     IEnumerator DelayForNewTask()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(waitForNewTask);
         taskFinished = true;
 
         //Camera Zoom Out
@@ -461,7 +542,6 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(2f);
         timerText.gameObject.SetActive(false);
     }
-    #endregion
 
     IEnumerator FinishingDay()
     {
@@ -485,9 +565,11 @@ public class GameManager : MonoBehaviour
 
     IEnumerator DelayForGameFinishScreen()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(7f);
         SceneManager.LoadScene("GameFinished");
     }
+    #endregion
+
 }
 
 
@@ -522,11 +604,13 @@ public class Task
     public Sprite newItem;
     public string newCharacterName;
     public int newTaskReward;
+
+    [Header("Obstacles")]
+    public Transform[] newObstacles;
+
     [TextArea]
     public string newTaskText;
 
-    //A variable that stores the container wich the virtual camera uses.
     //An array of Transforms where there are going to be obstacles
     //An array of obstacles
-
 }

@@ -73,8 +73,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject taskPanel;
     public Image theCharacter;
-    public Image thePickingBuiling;
-    public Image theDeliveringBuilding;
+    //public Image thePickingBuiling;
+    //public Image theDeliveringBuilding;
     public Image theItem;
     public Text theTime;
     public Text theRewardMoney;
@@ -173,7 +173,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         Chronometer();
 
         moneyUIDisplay.text = "$ " + currentMoney;
@@ -220,7 +219,7 @@ public class GameManager : MonoBehaviour
             taskPanel.SetActive(true);
             timerText.gameObject.SetActive(false);
 
-            if (Input.GetKeyDown(KeyCode.X))
+            if (Input.anyKey)
             {
                 timerON = true;
                 theCurrentPickUpPoint = Instantiate(pickUpGO, pickUpPoint.position, Quaternion.identity);
@@ -304,8 +303,8 @@ public class GameManager : MonoBehaviour
 
         //Asinging the values of the TaskPanel
         theCharacter.sprite = currentTask.newCharacter;
-        thePickingBuiling.sprite = currentTask.newPickingBuilding;
-        theDeliveringBuilding.sprite = currentTask.newDeliveringBuilding;
+        //thePickingBuiling.sprite = currentTask.newPickingBuilding;
+        //theDeliveringBuilding.sprite = currentTask.newDeliveringBuilding;
         theItem.sprite = currentTask.newItem;
         theTaskText.text = currentTask.newTaskText;
         theCharacterName.text = currentTask.newCharacterName;
@@ -406,7 +405,7 @@ public class GameManager : MonoBehaviour
             currentMood = minMood;
             //GameOVER
             //Change to GameOverScene
-            SceneManager.LoadScene("GameOver");
+            SceneManager.LoadScene("Final");
             Debug.Log("GAMEOVER");
         }
 

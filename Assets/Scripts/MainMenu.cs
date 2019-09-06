@@ -5,9 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public void Start()
+    {
+        panel.SetActive(false);
+    }
+
+    public GameObject panel;
+
     public void PlayButton()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("Intro");
     }
 
     public void QuitGame()
@@ -17,6 +24,11 @@ public class MainMenu : MonoBehaviour
 
     public void MainMenuButton()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("MainMenu");
+    }
+
+    public void DisplayPanel()
+    {
+        panel.SetActive(true);
     }
 }

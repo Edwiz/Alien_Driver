@@ -26,7 +26,6 @@ public class Pause : MonoBehaviour
     {
         if (Input.GetButtonDown("Cancel") && !pauseActive && canActivate)
         {
-            Cursor.visible = false;
             pauseMenu.SetActive(true);
             pauseActive = true;
             Time.timeScale = 0f;
@@ -49,7 +48,6 @@ public class Pause : MonoBehaviour
     public void MainMenu()
     {
         pauseActive = false;
-        Cursor.visible = true;
         SceneManager.LoadScene("MainMenu");
         Time.timeScale = 1f;
     }

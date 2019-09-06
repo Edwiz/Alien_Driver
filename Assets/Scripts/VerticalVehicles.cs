@@ -9,6 +9,10 @@ public class VerticalVehicles : MonoBehaviour
     public float moveSpeed;
     public bool movingUp;
     public bool moveVerticaly;
+    public float timeDamaged;
+    private float damageCounter;
+    [SerializeField]
+    private SpriteRenderer thePlayerSprite;
 
     private Rigidbody2D myRigidbody;
     private Animator theAnimator;
@@ -20,12 +24,23 @@ public class VerticalVehicles : MonoBehaviour
         myRigidbody = GetComponent<Rigidbody2D>();
         theAnimator = GetComponent<Animator>();
         movingUp = true;
+
+        thePlayerSprite = FindObjectOfType<PlayerController>().GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
         MovingVehicleVerticaly();
+
+        if (damageCounter > 0)
+        {
+            damageCounter -= Time.deltaTime;
+        }
+        else
+        {
+            thePlayerSprite.color = new Color(1, 1, 1, 1);
+        }
     }
 
     void MovingVehicleVerticaly()
@@ -56,6 +71,16 @@ public class VerticalVehicles : MonoBehaviour
         else
         {
             myRigidbody.velocity = new Vector3(0f, 0f, 0f);
+        }
+    }
+
+    public void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.name == "PlayerGO")
+        {
+            GameManager.instance.MoodDamaged(1);
+            thePlayerSprite.color = new Color(1, 0, 0, 1);
+            damageCounter = timeDamaged;
         }
     }
 

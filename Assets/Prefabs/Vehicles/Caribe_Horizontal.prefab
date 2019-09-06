@@ -57,7 +57,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1725163979878268422}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.38, y: -1.41, z: -0.060546875}
+  m_LocalPosition: {x: 2.35, y: -1.41, z: -0.060546875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1725163978789642276}
@@ -155,7 +155,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1725163980185618581}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: c1ddc9afe5c5e6142835976b6f88bd1c, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -229,6 +229,8 @@ MonoBehaviour:
   moveSpeed: 2
   movingRight: 0
   moveHorizontal: 1
+  timeDamaged: 0.15
+  thePlayerSprite: {fileID: 0}
 --- !u!1 &1725163980363911022
 GameObject:
   m_ObjectHideFlags: 0
@@ -253,7 +255,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1725163980363911022}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.02, y: -1.51, z: -0.060546875}
+  m_LocalPosition: {x: -7.66, y: -1.51, z: -0.060546875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1725163978789642276}

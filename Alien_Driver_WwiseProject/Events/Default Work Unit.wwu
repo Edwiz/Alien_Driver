@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{2BCDF38F-5402-4528-900B-3D0E68A792E2}" SchemaVersion="94">
+	<Events>
+		<WorkUnit Name="Default Work Unit" ID="{2BCDF38F-5402-4528-900B-3D0E68A792E2}" PersistMode="Standalone">
+			<ChildrenList>
+				<Event Name="Moto_Start" ID="{5C3E5D93-6FA7-44AD-B9F1-3338DDD919EA}">
+					<ChildrenList>
+						<Action Name="" ID="{1E6DD541-EDC6-4F5B-B968-D8DA478CB97F}" ShortID="783520590">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FX_motorStart" ID="{D142003E-39C3-4BE5-B86C-A5C41499543D}" WorkUnitID="{9E69C7F1-451C-4B9A-B667-F80E49FF0A5E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Moto_Stop" ID="{752A64E0-1C57-4361-9CAB-E9C3B909220F}">
+					<ChildrenList>
+						<Action Name="" ID="{693580EF-8AEA-4AAE-8ED6-8E50915F3673}" ShortID="965059664">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FC_motorStop" ID="{0B7F9F54-7222-411D-80F1-20F88A095A4C}" WorkUnitID="{9E69C7F1-451C-4B9A-B667-F80E49FF0A5E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Moto_Normal" ID="{8A2A7DA5-F43C-4FE4-92D7-97547803EF76}">
+					<ChildrenList>
+						<Action Name="" ID="{AFBE4B0C-1448-4E0C-87EA-3AEFCF9E1363}" ShortID="102423242">
+							<PropertyList>
+								<Property Name="Delay" Type="Real64" Value="1"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FX_motor" ID="{565275FF-353B-401B-B9BF-159601C8AB50}" WorkUnitID="{9E69C7F1-451C-4B9A-B667-F80E49FF0A5E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Menu_Music" ID="{2EB8D1FE-2977-47DC-BFDA-3AA699E1758A}">
+					<ChildrenList>
+						<Action Name="" ID="{61B7B53C-E55A-4A30-9119-8E52FB28B9F7}" ShortID="780062228">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="MX_TEMAAD" ID="{1420A995-60D7-4EAD-B18A-0AAE4773BEBC}" WorkUnitID="{9E69C7F1-451C-4B9A-B667-F80E49FF0A5E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Seleccionar" ID="{E1B236DF-2812-463B-9E2B-6B87FD514849}">
+					<ChildrenList>
+						<Action Name="" ID="{72BF5237-031F-4D09-B64F-2853F374E13D}" ShortID="698969362">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Menú1_seleccionar" ID="{FA23E490-208D-42C9-A377-496C3D4E313B}" WorkUnitID="{9E69C7F1-451C-4B9A-B667-F80E49FF0A5E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Aceptar" ID="{0A2029D6-3B7E-45A9-A738-2D8091DF7C07}">
+					<ChildrenList>
+						<Action Name="" ID="{FCDB46C4-EB29-4C48-8A2E-04F452F6F6AC}" ShortID="1031524474">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="Menú_ACEPTAR" ID="{8500F9B3-7D61-4A2A-B61F-428A7F558A52}" WorkUnitID="{9E69C7F1-451C-4B9A-B667-F80E49FF0A5E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+			</ChildrenList>
+		</WorkUnit>
+	</Events>
+</WwiseDocument>

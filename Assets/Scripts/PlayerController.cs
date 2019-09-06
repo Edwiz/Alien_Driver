@@ -51,7 +51,14 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
 
-        Debug.Log(theRigidBody.velocity);
+
+        float velocityGameParameter = (theRigidBody.velocity.magnitude / 5.5f )*100;
+
+        AkSoundEngine.SetRTPCValue("Velocity", velocityGameParameter);
+
+        //Debug.Log(velocityGameParameter);
+
+
 
         if (speedIncrement > 0 && !Input.GetButton("Fire1"))
         {

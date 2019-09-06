@@ -1,0 +1,17 @@
+Event	ID	Name			Wwise Object Path	Notes
+	770618969	Seleccionar			\Default Work Unit\Seleccionar	
+	1239773916	Moto_Normal			\Default Work Unit\Moto_Normal	
+	1998665265	Moto_Stop			\Default Work Unit\Moto_Stop	
+	2830931775	Aceptar			\Default Work Unit\Aceptar	
+	3560533491	Moto_Start			\Default Work Unit\Moto_Start	
+	4055567060	Menu_Music			\Default Work Unit\Menu_Music	
+
+Game Parameter	ID	Name			Wwise Object Path	Notes
+	3519441192	Velocity			\Default Work Unit\Velocity	
+
+In Memory Audio	ID	Name	Audio source file		Wwise Object Path	Notes	Data Size
+	55721774	FX_motor	C:\Users\schna\Desktop\Alien_Driver\Alien_Driver_WwiseProject\.cache\Mac\SFX\FX_motor_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\FX_motor		4727988
+	83284111	FX_motorStart	C:\Users\schna\Desktop\Alien_Driver\Alien_Driver_WwiseProject\.cache\Mac\SFX\FX_motorStart_F2714166.wem		\Actor-Mixer Hierarchy\Default Work Unit\FX_motorStart		297840
+	416912847	Menu	477505953	Menu	816535880	FC_motorStop	C:\Users\schna\Desktop\Alien_Driver\Alien_Driver_WwiseProject\.cache\Mac\SFX\FC_motorStop_0A1C0C64.wem		\Actor-Mixer Hierarchy\Default Work Unit\FC_motorStop		208492
+	943313564	MX_TEMAAD	C:\Users\schna\Desktop\Alien_Driver\Alien_Driver_WwiseProject\.cache\Mac\SFX\MX_TEMAAD_D79FB2B7.wem		\Actor-Mixer Hierarchy\Default Work Unit\MX_TEMAAD		12949980
+

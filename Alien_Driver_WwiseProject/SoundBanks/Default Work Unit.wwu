@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{E6CFF635-3742-4398-B3E7-D72B72EFE034}" SchemaVersion="94">
+	<SoundBanks>
+		<WorkUnit Name="Default Work Unit" ID="{E6CFF635-3742-4398-B3E7-D72B72EFE034}" PersistMode="Standalone">
+			<ChildrenList>
+				<SoundBank Name="Main" ID="{5324D176-6A5B-4733-8680-F45BA671CF3F}">
+					<ObjectInclusionList>
+						<ObjectRef Name="Moto_Stop" ID="{752A64E0-1C57-4361-9CAB-E9C3B909220F}" WorkUnitID="{2BCDF38F-5402-4528-900B-3D0E68A792E2}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Moto_Start" ID="{5C3E5D93-6FA7-44AD-B9F1-3338DDD919EA}" WorkUnitID="{2BCDF38F-5402-4528-900B-3D0E68A792E2}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Aceptar" ID="{0A2029D6-3B7E-45A9-A738-2D8091DF7C07}" WorkUnitID="{2BCDF38F-5402-4528-900B-3D0E68A792E2}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Seleccionar" ID="{E1B236DF-2812-463B-9E2B-6B87FD514849}" WorkUnitID="{2BCDF38F-5402-4528-900B-3D0E68A792E2}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Menu_Music" ID="{2EB8D1FE-2977-47DC-BFDA-3AA699E1758A}" WorkUnitID="{2BCDF38F-5402-4528-900B-3D0E68A792E2}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Moto_Normal" ID="{8A2A7DA5-F43C-4FE4-92D7-97547803EF76}" WorkUnitID="{2BCDF38F-5402-4528-900B-3D0E68A792E2}" Filter="7" Origin="Manual"/>
+					</ObjectInclusionList>
+					<ObjectExclusionList/>
+					<GameSyncExclusionList/>
+				</SoundBank>
+			</ChildrenList>
+		</WorkUnit>
+	</SoundBanks>
+</WwiseDocument>

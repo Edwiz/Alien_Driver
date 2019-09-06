@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<WwiseDocument Type="WorkUnit" ID="{9E69C7F1-451C-4B9A-B667-F80E49FF0A5E}" SchemaVersion="94">
+	<AudioObjects>
+		<WorkUnit Name="Default Work Unit" ID="{9E69C7F1-451C-4B9A-B667-F80E49FF0A5E}" PersistMode="Standalone">
+			<ChildrenList>
+				<Sound Name="FX_motor" ID="{565275FF-353B-401B-B9BF-159601C8AB50}" ShortID="192023176">
+					<PropertyList>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+						<Property Name="OutputBusVolume" Type="Real64">
+							<RTPCList>
+								<RTPC Name="" ID="{541AB1F5-1229-4F7A-A580-79FE2EE99E9E}" ShortID="951520127">
+									<ReferenceList>
+										<Reference Name="ControlInput">
+											<ObjectRef Name="Velocity" ID="{AB488AB8-72E7-4095-A9C4-C0E332214A21}" WorkUnitID="{D3A83678-58E3-46FF-80F1-2BB06A8267DD}"/>
+										</Reference>
+									</ReferenceList>
+									<Curve Name="" ID="{F04C38ED-E782-4587-BBD3-4810BF2101CA}">
+										<PropertyList>
+											<Property Name="Flags" Type="int32" Value="3"/>
+										</PropertyList>
+										<PointList>
+											<Point>
+												<XPos>0</XPos>
+												<YPos>-5.05596</YPos>
+												<Flags>5</Flags>
+												<SegmentShape>Log3</SegmentShape>
+											</Point>
+											<Point>
+												<XPos>12.17798</XPos>
+												<YPos>-1.40452</YPos>
+												<Flags>0</Flags>
+											</Point>
+											<Point>
+												<XPos>100</XPos>
+												<YPos>0</YPos>
+												<Flags>37</Flags>
+											</Point>
+										</PointList>
+									</Curve>
+								</RTPC>
+							</RTPCList>
+						</Property>
+						<Property Name="Pitch" Type="int32">
+							<RTPCList>
+								<RTPC Name="" ID="{1333871A-A908-4014-8DDE-60148D393A18}" ShortID="932326975">
+									<ReferenceList>
+										<Reference Name="ControlInput">
+											<ObjectRef Name="Velocity" ID="{AB488AB8-72E7-4095-A9C4-C0E332214A21}" WorkUnitID="{D3A83678-58E3-46FF-80F1-2BB06A8267DD}"/>
+										</Reference>
+									</ReferenceList>
+									<Curve Name="" ID="{D8180C87-3E41-4AEF-BE7B-2D398A575D97}">
+										<PropertyList>
+											<Property Name="Flags" Type="int32" Value="65537"/>
+										</PropertyList>
+										<PointList>
+											<Point>
+												<XPos>0</XPos>
+												<YPos>0</YPos>
+												<Flags>5</Flags>
+											</Point>
+											<Point>
+												<XPos>100</XPos>
+												<YPos>1952</YPos>
+												<Flags>37</Flags>
+											</Point>
+										</PointList>
+									</Curve>
+								</RTPC>
+							</RTPCList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9A27311F-DCBB-4BFB-A798-31F119162978}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{730A62B4-1102-4441-AB20-EF8B75C350B7}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="FX_motor" ID="{1DBFACA8-0717-44B1-BA99-EB3650853D30}" ShortID="55721774">
+							<Language>SFX</Language>
+							<AudioFile>FX_motor.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="FX_motor" ID="{1DBFACA8-0717-44B1-BA99-EB3650853D30}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="FX_motorStart" ID="{D142003E-39C3-4BE5-B86C-A5C41499543D}" ShortID="451293086">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9A27311F-DCBB-4BFB-A798-31F119162978}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{730A62B4-1102-4441-AB20-EF8B75C350B7}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="FX_motorStart" ID="{D147574E-E0C8-4071-8051-43FE5A5CC053}" ShortID="83284111">
+							<PropertyList>
+								<Property Name="FadeInDuration" Type="Real64" Value="7.17648831951771E-02"/>
+								<Property Name="FadeOutDuration" Type="Real64" Value="0.279085656870133"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimBegin" Type="Real64" Value="0.510328058276815"/>
+								<Property Name="TrimEnd" Type="Real64" Value="2.0612469228837"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>FX_motorStart.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="FX_motorStart" ID="{D147574E-E0C8-4071-8051-43FE5A5CC053}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="FC_motorStop" ID="{0B7F9F54-7222-411D-80F1-20F88A095A4C}" ShortID="101312598">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9A27311F-DCBB-4BFB-A798-31F119162978}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{730A62B4-1102-4441-AB20-EF8B75C350B7}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="FC_motorStop" ID="{5E9169C4-516C-4E73-98C7-2A884A4EB86C}" ShortID="816535880">
+							<PropertyList>
+								<Property Name="FadeInDuration" Type="Real64" Value="0.161621118681082"/>
+								<Property Name="FadeOutDuration" Type="Real64" Value="0.254200206080925"/>
+								<Property Name="LoopBegin" Type="Real64" Value="1.22392691816742"/>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimBegin" Type="Real64" Value="0.900684680805254"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>FC_motorStop.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="FC_motorStop" ID="{5E9169C4-516C-4E73-98C7-2A884A4EB86C}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="MX_TEMAAD" ID="{1420A995-60D7-4EAD-B18A-0AAE4773BEBC}" ShortID="292829946">
+					<PropertyList>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9A27311F-DCBB-4BFB-A798-31F119162978}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{730A62B4-1102-4441-AB20-EF8B75C350B7}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="MX_TEMAAD" ID="{F1FDBF13-6765-4B12-AA9E-FCC12D0538BF}" ShortID="943313564">
+							<Language>SFX</Language>
+							<AudioFile>MX_TEMAAD.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="MX_TEMAAD" ID="{F1FDBF13-6765-4B12-AA9E-FCC12D0538BF}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Menú1_seleccionar" ID="{FA23E490-208D-42C9-A377-496C3D4E313B}" ShortID="1055600383">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>6</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9A27311F-DCBB-4BFB-A798-31F119162978}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{730A62B4-1102-4441-AB20-EF8B75C350B7}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Menú1_seleccionar" ID="{3A05D463-3ACE-4589-B223-5011B609C54A}" ShortID="477505953">
+							<Language>SFX</Language>
+							<AudioFile>Menú1_seleccionar.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Menú1_seleccionar" ID="{3A05D463-3ACE-4589-B223-5011B609C54A}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="Menú_ACEPTAR" ID="{8500F9B3-7D61-4A2A-B61F-428A7F558A52}" ShortID="688000810">
+					<PropertyList>
+						<Property Name="Volume" Type="Real64">
+							<ValueList>
+								<Value>7</Value>
+							</ValueList>
+						</Property>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9A27311F-DCBB-4BFB-A798-31F119162978}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{730A62B4-1102-4441-AB20-EF8B75C350B7}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="Menú_ACEPTAR" ID="{72CD6CF5-479E-40DD-A8BA-E6E79508FAB4}" ShortID="416912847">
+							<Language>SFX</Language>
+							<AudioFile>Menú_ACEPTAR.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="Menú_ACEPTAR" ID="{72CD6CF5-479E-40DD-A8BA-E6E79508FAB4}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+			</ChildrenList>
+		</WorkUnit>
+	</AudioObjects>
+</WwiseDocument>

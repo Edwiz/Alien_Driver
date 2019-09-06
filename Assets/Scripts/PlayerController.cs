@@ -50,6 +50,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        Debug.Log(theRigidBody.velocity);
+
         if (speedIncrement > 0 && !Input.GetButton("Fire1"))
         {
             Debug.Log("isBreaking");

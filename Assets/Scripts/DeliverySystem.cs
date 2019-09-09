@@ -14,6 +14,9 @@ public class DeliverySystem : MonoBehaviour
     public bool itemDelivered;
 
     //Cached Variables
+    private VerticalVehicles[] verticalCars;
+    private HorizontalVehicles[] horizontalCars;
+
 
     //Private Variables
     private float timeCounter;
@@ -29,6 +32,10 @@ public class DeliverySystem : MonoBehaviour
         instance = this;
         theAnimator = GetComponent<Animator>();
         deliverSpriteRenderer = GetComponentInChildren<SpriteRenderer>();
+
+        horizontalCars = FindObjectsOfType<HorizontalVehicles>();
+        verticalCars = FindObjectsOfType<VerticalVehicles>();
+
     }
 
     public void Update()
@@ -43,8 +50,28 @@ public class DeliverySystem : MonoBehaviour
         if (timeCounter < 0 && insideArea == true && GameManager.instance.itemDelivered == false)
         {
             Debug.Log("Item Delivered");
+            GameManager.instance.arrowUpUI.SetActive(true);
             GameManager.instance.theItemUI.gameObject.SetActive(false);
+
+            foreach (HorizontalVehicles horizontaVehics in horizontalCars)
+            {
+                horizontaVehics.canMove = false;
+            }
+
+            foreach (VerticalVehicles verticalVehics in verticalCars)
+            {
+               verticalVehics.canMove = false;
+            }
+
+            //HorizontalVehicles.instance.canMove = false;
+            //VerticalVehicles.instance.canMove = false;
+            //DuplicateVehicle.instance.canMove = false;
+
             PlayerController.instance.canMove = false;
+            var StopVelocity = PlayerController.instance.theRigidBody.velocity = new Vector2(0f, 0f);
+            PlayerController.instance.myAnim.SetFloat("moveX", StopVelocity.x);
+            PlayerController.instance.myAnim.SetFloat("moveY", StopVelocity.y);
+
             deliverSpriteRenderer.color = new Color(1, 1, 1, 0);
             GameManager.instance.timerON = false;
             Debug.Log("Initiate another task");

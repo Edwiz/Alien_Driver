@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3043952906892417198}
   m_Layer: 0
   m_Name: Caribe_Vertical
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -49,7 +49,7 @@ GameObject:
   - component: {fileID: 3043952908484976197}
   m_Layer: 0
   m_Name: Vertical_Caribe
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -198,9 +198,7 @@ MonoBehaviour:
   downPoint: {fileID: 7628979092887194900}
   moveSpeed: 2
   movingUp: 0
-  moveVerticaly: 1
-  timeDamaged: 0.15
-  thePlayerSprite: {fileID: 0}
+  canMove: 0
 --- !u!1 &3043952908727670216
 GameObject:
   m_ObjectHideFlags: 0
@@ -212,7 +210,7 @@ GameObject:
   - component: {fileID: 3043952908727670199}
   m_Layer: 0
   m_Name: 'Up_point '
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -242,7 +240,7 @@ GameObject:
   - component: {fileID: 7628979092887194900}
   m_Layer: 0
   m_Name: Down_point
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

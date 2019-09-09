@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class VerticalVehicles : MonoBehaviour
 {
+    //public static VerticalVehicles instance;
+
     public Transform upPoint;
     public Transform downPoint;
     public float moveSpeed;
     public bool movingUp;
-    public bool moveVerticaly;
-    public float timeDamaged;
-    private float damageCounter;
-    [SerializeField]
-    private SpriteRenderer thePlayerSprite;
+    public bool canMove;
 
     private Rigidbody2D myRigidbody;
     private Animator theAnimator;
@@ -21,31 +19,23 @@ public class VerticalVehicles : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        //instance = this;
+
         myRigidbody = GetComponent<Rigidbody2D>();
         theAnimator = GetComponent<Animator>();
         movingUp = true;
 
-        thePlayerSprite = FindObjectOfType<PlayerController>().GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
         MovingVehicleVerticaly();
-
-        if (damageCounter > 0)
-        {
-            damageCounter -= Time.deltaTime;
-        }
-        else
-        {
-            thePlayerSprite.color = new Color(1, 1, 1, 1);
-        }
     }
 
     void MovingVehicleVerticaly()
     {
-        if (moveVerticaly)
+        if (canMove)
         {
             if (movingUp && transform.position.y > upPoint.position.y)
             {
@@ -79,9 +69,14 @@ public class VerticalVehicles : MonoBehaviour
         if (other.gameObject.name == "PlayerGO")
         {
             GameManager.instance.MoodDamaged(1);
-            thePlayerSprite.color = new Color(1, 0, 0, 1);
-            damageCounter = timeDamaged;
+            GameManager.instance.arrowDownUI.SetActive(true);
+            StartCoroutine(TurningOFFArrowVertical());
         }
     }
 
+    public IEnumerator TurningOFFArrowVertical()
+    {
+        yield return new WaitForSeconds(1);
+        GameManager.instance.arrowDownUI.SetActive(false);
+    }
 }

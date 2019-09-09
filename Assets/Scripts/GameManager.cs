@@ -8,6 +8,7 @@ using Cinemachine;
 public class GameManager : MonoBehaviour
 {
     #region GeneralFields
+    
     public static GameManager instance;
 
     public float waitForNewTask;
@@ -27,6 +28,9 @@ public class GameManager : MonoBehaviour
 
     [Header("UI")]
     public GameObject dayIntroGO;
+    public GameObject arrowDownUI;
+    public GameObject arrowUpUI;
+    public GameObject smsUI;
     public Text dayIntroText;
     public Image theItemUI;
 
@@ -48,6 +52,7 @@ public class GameManager : MonoBehaviour
     //Private Variables
     private Task currentTask;
     private bool readyToStartNewDay;
+
     #endregion
 
     #region Resume_Panel
@@ -138,6 +143,15 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public int obstacleCount;
 
+    [Header("Vehicles")]
+    public GameObject[] theHorizontalCars;
+    public GameObject[] theVerticalCars;
+
+    public GameObject[] vehiclesToActivate = new GameObject[5];
+
+    private VerticalVehicles[] verticalVehicles;
+    private HorizontalVehicles[] horizontalVehicles;
+
     [Header("Days Configuration")]
     public Day[] days;
 
@@ -149,7 +163,6 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public Day currentDay;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -160,6 +173,7 @@ public class GameManager : MonoBehaviour
 
         currentMood = 3;
         UpdateMood();
+        UpdatingVehicles();
 
         //Camera settings
         currentCameraSize = cameraStartingSize;
@@ -167,12 +181,19 @@ public class GameManager : MonoBehaviour
         currentMoney = 0;
 
         completedTasks = 0;
+
+        smsUI.SetActive(true);
+        StartCoroutine(TurnOFFSMS());
+
     }
 
-    
+
     // Update is called once per frame
     void Update()
     {
+        verticalVehicles = FindObjectsOfType<VerticalVehicles>();
+        horizontalVehicles = FindObjectsOfType<HorizontalVehicles>();
+
         Chronometer();
 
         moneyUIDisplay.text = "$ " + currentMoney;
@@ -187,6 +208,9 @@ public class GameManager : MonoBehaviour
             {
                 timerON = false;
                 PlayerController.instance.canMove = false;
+                var StopVelocity = PlayerController.instance.theRigidBody.velocity = new Vector2(0f, 0f);
+                PlayerController.instance.myAnim.SetFloat("moveX", StopVelocity.x);
+                PlayerController.instance.myAnim.SetFloat("moveY", StopVelocity.y);
                 StartCoroutine(DisableChronometer());
                 StartCoroutine(FinishingDay());
             }
@@ -218,14 +242,25 @@ public class GameManager : MonoBehaviour
         {
             taskPanel.SetActive(true);
             timerText.gameObject.SetActive(false);
+            UpdatingVehicles();
 
-            if (Input.anyKey)
+            if (Input.GetKeyDown(KeyCode.Space))
             {
                 timerON = true;
                 theCurrentPickUpPoint = Instantiate(pickUpGO, pickUpPoint.position, Quaternion.identity);
                 taskPanelActive = false;
                 dayIntroGO.SetActive(false);
                 PlayerController.instance.canMove = true;
+                // HorizontalVehicles.instance.canMove = true;
+                foreach (HorizontalVehicles horizontalCar in horizontalVehicles)
+                {
+                    horizontalCar.canMove = true;
+                }
+
+                foreach (VerticalVehicles verticalCar in verticalVehicles)
+                {
+                    verticalCar.canMove = true;
+                }
             }
         }
         else
@@ -280,7 +315,7 @@ public class GameManager : MonoBehaviour
 
         //Day Ending Panel
         theResumeCharacter.sprite = currentDay.newResumeCharacter;
-        theResumeTitle.text = "Resumen del día "+ (currentDayIndex + 1).ToString();
+        theResumeTitle.text = "Resumen del día " + (currentDayIndex + 1).ToString();
         theResumeDayText.text = currentDay.newDayResumeText;
 
 
@@ -289,13 +324,14 @@ public class GameManager : MonoBehaviour
 
     public void StartNewTask(int index)
     {
+        arrowDownUI.SetActive(false);
+        arrowUpUI.SetActive(false);
         taskPanelActive = true;
         currentTask = currentDay.tasks[index];
         timeForTask = currentTask.newTimeForTask;
         obstacleCount = currentTask.newObstacles.Length;
 
-
-        theRewardMoney.text = "$ "+ currentTask.newTaskReward;
+        theRewardMoney.text = "$ " + currentTask.newTaskReward;
         moneyToSum = currentTask.newTaskReward;
 
         //Asigning the value to the current pickup point from the pickup values of the Task sub class
@@ -353,6 +389,8 @@ public class GameManager : MonoBehaviour
                 Debug.Log("Pedido no entregado.");
                 timerON = false;
 
+                arrowDownUI.SetActive(true);
+
                 PlayerController.instance.canMove = false;
                 var StopVelocity = PlayerController.instance.theRigidBody.velocity = new Vector2(0f, 0f);
                 PlayerController.instance.myAnim.SetFloat("moveX", StopVelocity.x);
@@ -368,6 +406,22 @@ public class GameManager : MonoBehaviour
 
                 //Decrease Mood
                 MoodDamaged(1);//Im hard coding here but i have to specify how much damage to the mood is going to happen
+
+                //Stopping Cars
+                //HorizontalVehicles.instance.canMove = false;
+
+                foreach (HorizontalVehicles horizontalCar in horizontalVehicles)
+                {
+                    horizontalCar.canMove = false;
+                }
+
+                foreach (VerticalVehicles verticalCar in verticalVehicles)
+                {
+                    verticalCar.canMove = false;
+                }
+
+                //VerticalVehicles.instance.canMove = false;
+                //verticalCar.canMove = false;
             }
 
             //Change Timer color to Red
@@ -518,6 +572,92 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void UpdatingVehicles()
+    {
+        switch (currentTaskIndex)
+        {
+            case 0:
+                vehiclesToActivate[0].SetActive(true);
+                vehiclesToActivate[1].SetActive(false);
+                vehiclesToActivate[2].SetActive(false);
+                vehiclesToActivate[3].SetActive(false);
+                vehiclesToActivate[4].SetActive(false);
+                vehiclesToActivate[5].SetActive(false);
+                vehiclesToActivate[6].SetActive(false);
+                return;
+
+            case 1:
+                vehiclesToActivate[0].SetActive(true);
+                vehiclesToActivate[1].SetActive(false);
+                vehiclesToActivate[2].SetActive(false);
+                vehiclesToActivate[3].SetActive(false);
+                vehiclesToActivate[4].SetActive(false);
+                vehiclesToActivate[5].SetActive(false);
+                vehiclesToActivate[6].SetActive(false);
+                return;
+
+            case 2:
+                vehiclesToActivate[0].SetActive(true);
+                vehiclesToActivate[1].SetActive(true);
+                vehiclesToActivate[2].SetActive(false);
+                vehiclesToActivate[3].SetActive(false);
+                vehiclesToActivate[4].SetActive(false);
+                vehiclesToActivate[5].SetActive(false);
+                vehiclesToActivate[6].SetActive(false);
+                return;
+
+            case 3:
+                vehiclesToActivate[0].SetActive(true);
+                vehiclesToActivate[1].SetActive(true);
+                vehiclesToActivate[2].SetActive(true);
+                vehiclesToActivate[3].SetActive(false);
+                vehiclesToActivate[4].SetActive(false);
+                vehiclesToActivate[5].SetActive(false);
+                vehiclesToActivate[6].SetActive(false);
+                return;
+
+            case 4:
+                vehiclesToActivate[0].SetActive(true);
+                vehiclesToActivate[1].SetActive(true);
+                vehiclesToActivate[2].SetActive(true);
+                vehiclesToActivate[3].SetActive(true);
+                vehiclesToActivate[4].SetActive(true);
+                vehiclesToActivate[5].SetActive(false);
+                vehiclesToActivate[6].SetActive(false);
+                return;
+
+            case 5:
+                vehiclesToActivate[0].SetActive(true);
+                vehiclesToActivate[1].SetActive(true);
+                vehiclesToActivate[2].SetActive(true);
+                vehiclesToActivate[3].SetActive(false);
+                vehiclesToActivate[4].SetActive(true);
+                vehiclesToActivate[5].SetActive(true);
+                vehiclesToActivate[6].SetActive(false);
+                return;
+
+            case 6:
+                vehiclesToActivate[0].SetActive(true);
+                vehiclesToActivate[1].SetActive(true);
+                vehiclesToActivate[2].SetActive(true);
+                vehiclesToActivate[3].SetActive(false);
+                vehiclesToActivate[4].SetActive(true);
+                vehiclesToActivate[5].SetActive(false);
+                vehiclesToActivate[6].SetActive(true);
+                return;
+
+            default:
+                vehiclesToActivate[0].SetActive(false);
+                vehiclesToActivate[1].SetActive(false);
+                vehiclesToActivate[2].SetActive(false);
+                vehiclesToActivate[3].SetActive(false);
+                vehiclesToActivate[4].SetActive(false);
+                vehiclesToActivate[5].SetActive(false);
+                vehiclesToActivate[6].SetActive(false);
+                return;
+        }
+    }
+
     #region CoRoutines
 
     IEnumerator DelayForNewTask()
@@ -566,6 +706,12 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(7f);
         SceneManager.LoadScene("GameFinished");
+    }
+
+    IEnumerator TurnOFFSMS()
+    {
+        yield return new WaitForSeconds(2);
+        smsUI.SetActive(false);
     }
     #endregion
 

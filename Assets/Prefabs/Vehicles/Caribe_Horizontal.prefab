@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1725163978789642276}
   m_Layer: 0
   m_Name: Caribe_Horizontal
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -44,7 +44,7 @@ GameObject:
   - component: {fileID: 1725163979878268423}
   m_Layer: 0
   m_Name: Right_point
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -79,7 +79,7 @@ GameObject:
   - component: {fileID: 1725163980185618582}
   m_Layer: 0
   m_Name: Horizontal_Caribe
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -228,7 +228,7 @@ MonoBehaviour:
   rightPoint: {fileID: 1725163979878268423}
   moveSpeed: 2
   movingRight: 0
-  moveHorizontal: 1
+  canMove: 0
   timeDamaged: 0.15
   thePlayerSprite: {fileID: 0}
 --- !u!1 &1725163980363911022
@@ -242,7 +242,7 @@ GameObject:
   - component: {fileID: 1725163980363911023}
   m_Layer: 0
   m_Name: Left_point
-  m_TagString: Untagged
+  m_TagString: Vehicle
   m_Icon: {fileID: -5938655980376293919, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

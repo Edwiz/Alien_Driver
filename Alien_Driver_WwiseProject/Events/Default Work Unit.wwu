@@ -72,6 +72,28 @@
 						</Action>
 					</ChildrenList>
 				</Event>
+				<Event Name="Ambient_Music" ID="{0BDA69FB-F3F8-4C53-BFF2-C83004A664C1}">
+					<ChildrenList>
+						<Action Name="" ID="{B22F391A-BDDE-458B-83A7-8CCD9DE1A10C}" ShortID="738987849">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="AMBIENTE1" ID="{9CBCB7A8-532D-459A-98B3-977028E5CD57}" WorkUnitID="{9E69C7F1-451C-4B9A-B667-F80E49FF0A5E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
+				<Event Name="Claxon_01" ID="{C58FC8BF-3D22-4730-829C-1C4712547A64}">
+					<ChildrenList>
+						<Action Name="" ID="{490F1BB0-66F1-40B4-A63C-6F9C3F5B6948}" ShortID="594650032">
+							<ReferenceList>
+								<Reference Name="Target">
+									<ObjectRef Name="FX_Claxon1" ID="{0811CA9B-5594-44BB-8471-1069BBD2E183}" WorkUnitID="{9E69C7F1-451C-4B9A-B667-F80E49FF0A5E}"/>
+								</Reference>
+							</ReferenceList>
+						</Action>
+					</ChildrenList>
+				</Event>
 			</ChildrenList>
 		</WorkUnit>
 	</Events>

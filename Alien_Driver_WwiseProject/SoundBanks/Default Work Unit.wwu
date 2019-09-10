@@ -9,7 +9,9 @@
 						<ObjectRef Name="Moto_Start" ID="{5C3E5D93-6FA7-44AD-B9F1-3338DDD919EA}" WorkUnitID="{2BCDF38F-5402-4528-900B-3D0E68A792E2}" Filter="7" Origin="Manual"/>
 						<ObjectRef Name="Aceptar" ID="{0A2029D6-3B7E-45A9-A738-2D8091DF7C07}" WorkUnitID="{2BCDF38F-5402-4528-900B-3D0E68A792E2}" Filter="7" Origin="Manual"/>
 						<ObjectRef Name="Seleccionar" ID="{E1B236DF-2812-463B-9E2B-6B87FD514849}" WorkUnitID="{2BCDF38F-5402-4528-900B-3D0E68A792E2}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Claxon_01" ID="{C58FC8BF-3D22-4730-829C-1C4712547A64}" WorkUnitID="{2BCDF38F-5402-4528-900B-3D0E68A792E2}" Filter="7" Origin="Manual"/>
 						<ObjectRef Name="Menu_Music" ID="{2EB8D1FE-2977-47DC-BFDA-3AA699E1758A}" WorkUnitID="{2BCDF38F-5402-4528-900B-3D0E68A792E2}" Filter="7" Origin="Manual"/>
+						<ObjectRef Name="Ambient_Music" ID="{0BDA69FB-F3F8-4C53-BFF2-C83004A664C1}" WorkUnitID="{2BCDF38F-5402-4528-900B-3D0E68A792E2}" Filter="7" Origin="Manual"/>
 						<ObjectRef Name="Moto_Normal" ID="{8A2A7DA5-F43C-4FE4-92D7-97547803EF76}" WorkUnitID="{2BCDF38F-5402-4528-900B-3D0E68A792E2}" Filter="7" Origin="Manual"/>
 					</ObjectInclusionList>
 					<ObjectExclusionList/>

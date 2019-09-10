@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <SoundBanksInfo Platform="Mac" BasePlatform="Mac" SchemaVersion="11" SoundbankVersion="134">
 	<RootPaths>
-		<ProjectRoot>C:\Users\schna\Desktop\Alien_Driver\Alien_Driver_WwiseProject\</ProjectRoot>
-		<SourceFilesRoot>C:\Users\schna\Desktop\Alien_Driver\Alien_Driver_WwiseProject\.cache\Mac\</SourceFilesRoot>
-		<SoundBanksRoot>C:\Users\schna\Desktop\Alien_Driver\Alien_Driver_WwiseProject\GeneratedSoundBanks\Mac\</SoundBanksRoot>
+		<ProjectRoot>C:\Users\Oswaldo\Unity_Projects\Alien_Driver\Alien_Driver_WwiseProject\</ProjectRoot>
+		<SourceFilesRoot>C:\Users\Oswaldo\Unity_Projects\Alien_Driver\Alien_Driver_WwiseProject\.cache\Mac\</SourceFilesRoot>
+		<SoundBanksRoot>C:\Users\Oswaldo\Unity_Projects\Alien_Driver\Alien_Driver_WwiseProject\GeneratedSoundBanks\Mac\</SoundBanksRoot>
 		<ExternalSourcesInputFile></ExternalSourcesInputFile>
-		<ExternalSourcesOutputRoot>C:\Users\schna\Desktop\Alien_Driver\Alien_Driver_WwiseProject\GeneratedSoundBanks\Mac</ExternalSourcesOutputRoot>
+		<ExternalSourcesOutputRoot>C:\Users\Oswaldo\Unity_Projects\Alien_Driver\Alien_Driver_WwiseProject\GeneratedSoundBanks\Mac</ExternalSourcesOutputRoot>
 	</RootPaths>
 	<DialogueEvents/>
 	<StreamedFiles/>
@@ -22,6 +22,8 @@
 			<Path>Main.bnk</Path>
 			<IncludedEvents>
 				<Event Id="2830931775" Name="Aceptar" ObjectPath="\Events\Default Work Unit\Aceptar" DurationType="OneShot" DurationMin="0.143061" DurationMax="0.143061"/>
+				<Event Id="1564565979" Name="Ambient_Music" ObjectPath="\Events\Default Work Unit\Ambient_Music" DurationType="Infinite"/>
+				<Event Id="2845123618" Name="Claxon_01" ObjectPath="\Events\Default Work Unit\Claxon_01" DurationType="OneShot" DurationMin="1.019040" DurationMax="1.019040"/>
 				<Event Id="4055567060" Name="Menu_Music" ObjectPath="\Events\Default Work Unit\Menu_Music" DurationType="Infinite"/>
 				<Event Id="1239773916" Name="Moto_Normal" ObjectPath="\Events\Default Work Unit\Moto_Normal" DurationType="Infinite"/>
 				<Event Id="3560533491" Name="Moto_Start" ObjectPath="\Events\Default Work Unit\Moto_Start" DurationType="OneShot" DurationMin="1.550919" DurationMax="1.550919"/>
@@ -35,7 +37,15 @@
 				</File>
 				<File Id="83284111" Language="SFX">
 					<ShortName>FX_motorStart.wav</ShortName>
-					<Path>SFX\FX_motorStart_F2714166.wem</Path>
+					<Path>SFX\FX_motorStart_36BCCE57.wem</Path>
+				</File>
+				<File Id="238856576" Language="SFX">
+					<ShortName>AMBIENTE1.wav</ShortName>
+					<Path>SFX\AMBIENTE1_D79FB2B7.wem</Path>
+				</File>
+				<File Id="296313009" Language="SFX">
+					<ShortName>FX_Claxon1.wav</ShortName>
+					<Path>SFX\FX_Claxon1_1E4BAF4D.wem</Path>
 				</File>
 				<File Id="416912847" Language="SFX">
 					<ShortName>Menú_ACEPTAR.wav</ShortName>
@@ -47,7 +57,7 @@
 				</File>
 				<File Id="816535880" Language="SFX">
 					<ShortName>FC_motorStop.wav</ShortName>
-					<Path>SFX\FC_motorStop_0A1C0C64.wem</Path>
+					<Path>SFX\FC_motorStop_EDC2C11F.wem</Path>
 				</File>
 				<File Id="943313564" Language="SFX">
 					<ShortName>MX_TEMAAD.wav</ShortName>

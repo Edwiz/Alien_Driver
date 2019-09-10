@@ -5,12 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject panel;
+
     public void Start()
     {
         panel.SetActive(false);
     }
-
-    public GameObject panel;
 
     public void PlayButton()
     {
@@ -25,6 +25,11 @@ public class MainMenu : MonoBehaviour
     public void MainMenuButton()
     {
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void CreditsButton()
+    {
+        SceneManager.LoadScene("Credits");
     }
 
     public void DisplayPanel()

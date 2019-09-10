@@ -146,7 +146,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 147.00009, y: -63.45}
+  m_AnchoredPosition: {x: 104.00011, y: -63.45}
   m_SizeDelta: {x: 375, y: 379}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &143744948
@@ -333,7 +333,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -377.7774, y: -43}
+  m_AnchoredPosition: {x: -434, y: -43}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &245756764
@@ -472,7 +472,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -377.7774, y: 238}
+  m_AnchoredPosition: {x: -437, y: 238}
   m_SizeDelta: {x: 465.5, y: 344.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &297190519
@@ -613,6 +613,17 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2024130437}
         m_MethodName: play_Seleccionar
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2024130434}
+        m_MethodName: CreditsButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -830,6 +841,7 @@ GameObject:
   - component: {fileID: 643318734}
   - component: {fileID: 643318733}
   - component: {fileID: 643318732}
+  - component: {fileID: 643318735}
   m_Layer: 5
   m_Name: Quit_button
   m_TagString: Untagged
@@ -937,6 +949,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 643318730}
   m_CullTransparentMesh: 0
+--- !u!114 &643318735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 643318730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2024130437}
+          m_MethodName: play_Seleccionar
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.EventSystems.EventTrigger+TriggerEvent, UnityEngine.UI,
+        Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  delegates: []
 --- !u!1 &662585704
 GameObject:
   m_ObjectHideFlags: 0
@@ -1045,7 +1088,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 144, y: 98}
+  m_AnchoredPosition: {x: 101.000015, y: 98}
   m_SizeDelta: {x: 257.1, y: 74.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &698565350
@@ -1124,7 +1167,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 149, y: 92}
+  m_AnchoredPosition: {x: 106, y: 92}
   m_SizeDelta: {x: 255.2, y: 77.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &702421448
@@ -1853,7 +1896,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 589.66, y: -26.878}
+  m_AnchoredPosition: {x: 546.66, y: -26.878}
   m_SizeDelta: {x: 533, y: 475}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1528057638

@@ -19,6 +19,8 @@ public class HorizontalVehicles : MonoBehaviour
     private Rigidbody2D myRigidbody;
     private Animator theAnimator;
 
+    public AkEvent eventoClaxon;
+
 
     // Use this for initialization
     void Start()
@@ -89,6 +91,13 @@ public class HorizontalVehicles : MonoBehaviour
             damageCounter = timeDamaged;
             GameManager.instance.arrowDownUI.SetActive(true);
             StartCoroutine(TurningOFFArrow());
+
+            //Codigo para reproducir Audio de Claxon
+            if (eventoClaxon != null)
+            {
+                eventoClaxon.HandleEvent(gameObject);
+            }
+
         }
     }
 

@@ -14,6 +14,8 @@ namespace AK
     namespace EVENTS
     {
         static const AkUniqueID ACEPTAR = 2830931775U;
+        static const AkUniqueID AMBIENT_MUSIC = 1564565979U;
+        static const AkUniqueID CLAXON_01 = 2845123618U;
         static const AkUniqueID MENU_MUSIC = 4055567060U;
         static const AkUniqueID MOTO_NORMAL = 1239773916U;
         static const AkUniqueID MOTO_START = 3560533491U;

@@ -7,8 +7,10 @@ using Cinemachine;
 
 public class GameManager : MonoBehaviour
 {
+    #region Fields
+
     #region GeneralFields
-    
+
     public static GameManager instance;
 
     public float waitForNewTask;
@@ -124,6 +126,11 @@ public class GameManager : MonoBehaviour
     public Image Neutral;
     public Image Sad;
     public Image verySad;
+    public Image flare1;
+    public Image flare2;
+    public Image flare3;
+    public Image flare4;
+    public Image flare5;
 
     [HideInInspector]
     public int currentMood;
@@ -163,6 +170,10 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public Day currentDay;
 
+    #endregion
+
+    #region Methods
+
     // Start is called before the first frame update
     void Start()
     {
@@ -186,7 +197,6 @@ public class GameManager : MonoBehaviour
         StartCoroutine(TurnOFFSMS());
 
     }
-
 
     // Update is called once per frame
     void Update()
@@ -368,7 +378,6 @@ public class GameManager : MonoBehaviour
 
     }
 
-    #region TimerMethod
     public void Chronometer()
     {
         if (timerON)
@@ -435,7 +444,6 @@ public class GameManager : MonoBehaviour
             }
         }
     }
-    #endregion
 
     void CameraSize()
     {
@@ -485,89 +493,94 @@ public class GameManager : MonoBehaviour
         switch (currentMood)
         {
             case 5:
-                /*veryHappy.gameObject.SetActive(true);
-                Happy.gameObject.SetActive(false);
-                Neutral.gameObject.SetActive(false);
-                Sad.gameObject.SetActive(false);
-                verySad.gameObject.SetActive(false);*/
-
                 veryHappy.color = new Color(1, 1, 1, 1);
+                flare1.gameObject.SetActive(true);
                 Happy.color = new Color(1, 1, 1, 0.2f);
+                flare2.gameObject.SetActive(false);
                 Neutral.color = new Color(1, 1, 1, 0.2f);
+                flare3.gameObject.SetActive(false);
                 Sad.color = new Color(1, 1, 1, 0.2f);
+                flare4.gameObject.SetActive(false);
                 verySad.color = new Color(1, 1, 1, 0.2f);
+                flare5.gameObject.SetActive(false);
                 return;
 
             case 4:
-                /*veryHappy.gameObject.SetActive(false);
-                Happy.gameObject.SetActive(true);
-                Neutral.gameObject.SetActive(false);
-                Sad.gameObject.SetActive(false);
-                verySad.gameObject.SetActive(false);*/
-
                 veryHappy.color = new Color(1, 1, 1, 0.2f);
+                flare1.gameObject.SetActive(false);
                 Happy.color = new Color(1, 1, 1, 1);
+                flare2.gameObject.SetActive(true);
                 Neutral.color = new Color(1, 1, 1, 0.2f);
+                flare3.gameObject.SetActive(false);
                 Sad.color = new Color(1, 1, 1, 0.2f);
+                flare4.gameObject.SetActive(false);
                 verySad.color = new Color(1, 1, 1, 0.2f);
+                flare5.gameObject.SetActive(false);
                 return;
 
             case 3:
-                /*veryHappy.gameObject.SetActive(false);
-                Happy.gameObject.SetActive(false);
-                Neutral.gameObject.SetActive(true);
-                Sad.gameObject.SetActive(false);
-                verySad.gameObject.SetActive(false);*/
-
                 veryHappy.color = new Color(1, 1, 1, 0.2f);
+                flare1.gameObject.SetActive(false);
                 Happy.color = new Color(1, 1, 1, 0.2f);
+                flare2.gameObject.SetActive(false);
                 Neutral.color = new Color(1, 1, 1, 1f);
+                flare3.gameObject.SetActive(true);
                 Sad.color = new Color(1, 1, 1, 0.2f);
+                flare4.gameObject.SetActive(false);
                 verySad.color = new Color(1, 1, 1, 0.2f);
+                flare5.gameObject.SetActive(false);
                 return;
 
             case 2:
-                /*veryHappy.gameObject.SetActive(false);
-                Happy.gameObject.SetActive(false);
-                Neutral.gameObject.SetActive(false);
-                Sad.gameObject.SetActive(true);
-                verySad.gameObject.SetActive(false);*/
-
                 veryHappy.color = new Color(1, 1, 1, 0.2f);
+                flare1.gameObject.SetActive(false);
                 Happy.color = new Color(1, 1, 1, 0.2f);
+                flare2.gameObject.SetActive(false);
                 Neutral.color = new Color(1, 1, 1, 0.2f);
+                flare3.gameObject.SetActive(false);
                 Sad.color = new Color(1, 1, 1, 1f);
+                flare4.gameObject.SetActive(true);
                 verySad.color = new Color(1, 1, 1, 0.2f);
+                flare5.gameObject.SetActive(false);
                 return;
 
             case 1:
-                /*veryHappy.gameObject.SetActive(false);
-                Happy.gameObject.SetActive(false);
-                Neutral.gameObject.SetActive(false);
-                Sad.gameObject.SetActive(false);
-                verySad.gameObject.SetActive(true);*/
-
                 veryHappy.color = new Color(1, 1, 1, 0.2f);
+                flare1.gameObject.SetActive(false);
                 Happy.color = new Color(1, 1, 1, 0.2f);
+                flare2.gameObject.SetActive(false);
                 Neutral.color = new Color(1, 1, 1, 0.2f);
+                flare3.gameObject.SetActive(false);
                 Sad.color = new Color(1, 1, 1, 0.2f);
+                flare4.gameObject.SetActive(false);
                 verySad.color = new Color(1, 1, 1, 1);
+                flare5.gameObject.SetActive(true);
                 return;
 
             case 0:
                 veryHappy.gameObject.SetActive(false);
+                flare1.gameObject.SetActive(false);
                 Happy.gameObject.SetActive(false);
+                flare2.gameObject.SetActive(false);
                 Neutral.gameObject.SetActive(false);
+                flare3.gameObject.SetActive(false);
                 Sad.gameObject.SetActive(false);
+                flare4.gameObject.SetActive(false);
                 verySad.gameObject.SetActive(false);
+                flare5.gameObject.SetActive(false);
                 return;
 
             default:
                 veryHappy.gameObject.SetActive(false);
+                flare1.gameObject.SetActive(false);
                 Happy.gameObject.SetActive(false);
+                flare2.gameObject.SetActive(false);
                 Neutral.gameObject.SetActive(false);
+                flare3.gameObject.SetActive(false);
                 Sad.gameObject.SetActive(false);
+                flare4.gameObject.SetActive(false);
                 verySad.gameObject.SetActive(false);
+                flare5.gameObject.SetActive(false);
                 return;
         }
     }
@@ -658,6 +671,8 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    #endregion
+
     #region CoRoutines
 
     IEnumerator DelayForNewTask()
@@ -704,7 +719,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator DelayForGameFinishScreen()
     {
-        yield return new WaitForSeconds(7f);
+        yield return new WaitForSeconds(8f);
         SceneManager.LoadScene("GameFinished");
     }
 
@@ -714,10 +729,9 @@ public class GameManager : MonoBehaviour
         smsUI.SetActive(false);
     }
     #endregion
-
 }
 
-
+#region SubClasses
 [System.Serializable]
 public class Day
 {
@@ -759,3 +773,5 @@ public class Task
     //An array of Transforms where there are going to be obstacles
     //An array of obstacles
 }
+
+#endregion 

@@ -213,6 +213,51 @@
 						<ActiveSource Name="Menú_ACEPTAR" ID="{72CD6CF5-479E-40DD-A8BA-E6E79508FAB4}" Platform="Linked"/>
 					</ActiveSourceList>
 				</Sound>
+				<Sound Name="AMBIENTE1" ID="{9CBCB7A8-532D-459A-98B3-977028E5CD57}" ShortID="1070943720">
+					<PropertyList>
+						<Property Name="IsLoopingEnabled" Type="bool" Value="True"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9A27311F-DCBB-4BFB-A798-31F119162978}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{730A62B4-1102-4441-AB20-EF8B75C350B7}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="AMBIENTE1" ID="{191B19BF-FFC2-4ED5-A042-0C4354E938C7}" ShortID="238856576">
+							<Language>SFX</Language>
+							<AudioFile>AMBIENTE1.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="AMBIENTE1" ID="{191B19BF-FFC2-4ED5-A042-0C4354E938C7}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
+				<Sound Name="FX_Claxon1" ID="{0811CA9B-5594-44BB-8471-1069BBD2E183}" ShortID="324651525">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{9A27311F-DCBB-4BFB-A798-31F119162978}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{730A62B4-1102-4441-AB20-EF8B75C350B7}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<AudioFileSource Name="FX_Claxon1" ID="{FD2C6C7B-C21B-4454-9D6D-5DE8FCC73B9A}" ShortID="296313009">
+							<PropertyList>
+								<Property Name="OverrideWavLoop" Type="bool" Value="True"/>
+								<Property Name="TrimEnd" Type="Real64" Value="1.01903961584634"/>
+							</PropertyList>
+							<Language>SFX</Language>
+							<AudioFile>FX_Claxon1.wav</AudioFile>
+						</AudioFileSource>
+					</ChildrenList>
+					<ActiveSourceList>
+						<ActiveSource Name="FX_Claxon1" ID="{FD2C6C7B-C21B-4454-9D6D-5DE8FCC73B9A}" Platform="Linked"/>
+					</ActiveSourceList>
+				</Sound>
 			</ChildrenList>
 		</WorkUnit>
 	</AudioObjects>

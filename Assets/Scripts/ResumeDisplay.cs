@@ -21,21 +21,45 @@ public class ResumeDisplay : MonoBehaviour
 
         if (GameManager.instance.completedTasks == GameManager.instance.currentDay.tasks.Length)
         {
-            star1.gameObject.SetActive(true);
-            star2.gameObject.SetActive(true);
-            star3.gameObject.SetActive(true);
+            StartCoroutine(DisplayingStars_All());
         }
         else if (GameManager.instance.completedTasks < GameManager.instance.currentDay.tasks.Length && GameManager.instance.completedTasks > 1)
         {
-            star1.gameObject.SetActive(true);
-            star2.gameObject.SetActive(true);
-            star3.gameObject.SetActive(false);
+            StartCoroutine(DisplayingStars_Half());
         }
         else
         {
-            star1.gameObject.SetActive(true);
-            star2.gameObject.SetActive(false);
-            star3.gameObject.SetActive(false);
+            StartCoroutine(DisplayingStars_One());
         }
+    }
+
+    IEnumerator DisplayingStars_All()
+    {
+        star1.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(1f);
+        star2.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(1f);
+        star3.gameObject.SetActive(true);
+    }
+
+    IEnumerator DisplayingStars_Half()
+    {
+        star3.gameObject.SetActive(false);
+
+        star1.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(1f);
+        star2.gameObject.SetActive(true);
+    }
+
+    IEnumerator DisplayingStars_One()
+    {
+        star3.gameObject.SetActive(false);
+        star2.gameObject.SetActive(false);
+
+        yield return new WaitForSeconds(1f);
+        star1.gameObject.SetActive(true);
     }
 }

@@ -17,21 +17,21 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: e24302301131464382767b892adaeea5
     GuidInternal: 
-    m_lastTime: -8586338067875104702
+    m_lastTime: -8586338024663489477
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: b4620a7302114144ab20ef8b75c350b7
     GuidInternal: 
-    m_lastTime: -8586338067874117341
+    m_lastTime: -8586338024666301776
     List: []
   BankWwu:
   - PhysicalPath: SoundBanks\Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: 35f6cfe642379843b3e7d72b72efe034
     GuidInternal: 
-    m_lastTime: -8586338057059979729
+    m_lastTime: -8586335248460616611
     List:
     - name: Main
       guid: 76d124535b6a33478680f45ba671cf3f
@@ -47,8 +47,56 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 8ff3cd2b02542845900b3d0e68a792e2
     GuidInternal: 
-    m_lastTime: -8586338057060078912
+    m_lastTime: -8586335248462815698
     List:
+    - name: Aceptar
+      guid: d629200a7e3ba945a7382d8091df7c07
+      id: 2830931775
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Aceptar
+        ObjectType: 3
+      Path: Default Work Unit\Aceptar
+      maxAttenuation: 0
+      maxDuration: 0.143061
+      minDuration: 0.143061
+    - name: Ambient_Music
+      guid: fb69da0bf8f3534cbff2c83004a664c1
+      id: 1564565979
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Ambient_Music
+        ObjectType: 3
+      Path: Default Work Unit\Ambient_Music
+      maxAttenuation: 0
+      maxDuration: 318.09305
+      minDuration: 318.09305
+    - name: Claxon_01
+      guid: bfc88fc5223d3047829c1c4712547a64
+      id: 2845123618
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Claxon_01
+        ObjectType: 3
+      Path: Default Work Unit\Claxon_01
+      maxAttenuation: 0
+      maxDuration: 1.01904
+      minDuration: 1.01904
+    - name: Menu_Music
+      guid: fed1b82e7729dc47bfda3aa699e1758a
+      id: 4055567060
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Menu_Music
+        ObjectType: 3
+      Path: Default Work Unit\Menu_Music
+      maxAttenuation: 0
+      maxDuration: -1
+      minDuration: -1
     - name: Moto_Normal
       guid: a57d2a8a3cf4e44f92d797547803ef76
       id: 1239773916
@@ -59,8 +107,8 @@ MonoBehaviour:
         ObjectType: 3
       Path: Default Work Unit\Moto_Normal
       maxAttenuation: 0
-      maxDuration: 25.624603
-      minDuration: 25.624603
+      maxDuration: -1
+      minDuration: -1
     - name: Moto_Start
       guid: 935d3e5ca76fad44b9f13338ddd919ea
       id: 3560533491
@@ -85,12 +133,24 @@ MonoBehaviour:
       maxAttenuation: 0
       maxDuration: 1.18156
       minDuration: 1.18156
+    - name: Seleccionar
+      guid: df36b2e112283b469e2b6b87fd514849
+      id: 770618969
+      PathAndIcons:
+      - ElementName: Default Work Unit
+        ObjectType: 12
+      - ElementName: Seleccionar
+        ObjectType: 3
+      Path: Default Work Unit\Seleccionar
+      maxAttenuation: 0
+      maxDuration: 0.116984
+      minDuration: 0.116984
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: 7836a8d3e358ff4680f12bb06a8267dd
     GuidInternal: 
-    m_lastTime: -8586338052350150652
+    m_lastTime: -8586338024670207759
     List:
     - name: Velocity
       guid: b88a48abe7729540a9c4c0e332214a21
@@ -106,27 +166,25 @@ MonoBehaviour:
     ParentPhysicalPath: 
     guid: 0c2f2e72be6e044c8c21d80c0daa1085
     GuidInternal: 
-    m_lastTime: -8586338067873389294
+    m_lastTime: -8586338024663489477
     List: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: d93d226ff48f1b4a862b590524256a78
     GuidInternal: 
-    m_lastTime: -8586338067873319461
+    m_lastTime: -8586338024663489477
     List: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
     ParentPhysicalPath: 
     guid: 5b9398e981e12e419748eec46d0c7412
     GuidInternal: 
-    m_lastTime: -8586338067875044867
+    m_lastTime: -8586338024663489477
     List: []
   ExpandedItems:
   - /Alien_Driver_WwiseProject
   - /Alien_Driver_WwiseProject/Events
   - /Alien_Driver_WwiseProject/Events/Default Work Unit
-  - /Alien_Driver_WwiseProject/SoundBanks
-  - /Alien_Driver_WwiseProject/SoundBanks/Default Work Unit
   autoPopulateEnabled: 1
   CurrentPluginConfig: 

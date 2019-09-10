@@ -38,6 +38,7 @@ public class DirectionArrow : MonoBehaviour
         transform.rotation = rotation;
 
         /*
+         * This is for making the arrow big or small depending of the distance.
         //Checking distance between arrow and target
         distance = Vector2.Distance(transform.position, targetPos.position);
 
